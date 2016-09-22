@@ -1,0 +1,161 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="section-header col-sm-6 col-sm-offset-3">
+      <h1>All Questions</h1>
+    </div>
+  </div>
+  <div class="row" ng-controller="AnswerCtrl" >
+  <!-- SINGLE SELECT QUESTIONS -->
+  <div ng-repeat="question in questions track by $index" ng-show="question.inputType === 'single'" >
+    <div class="col-sm-4 col-md-3">
+      <div class="panel panel-default question-card">
+        <div class="panel-heading question-heading"><h4>{{question.category}}</h4></div>
+        <div class="panel-body question-body">
+          <h4 class="question-text">{{question.text}}</h4>
+            
+            <div class="content-container" >
+              <!-- SHOW THE QUESTION -->
+              <div class="question-container" ng-show="question.visible === true">
+                <div ng-repeat="option in question.answerOptions track by $index" class="radio">
+                  <label>
+                    <input type="radio" 
+                    name="optionsRadios" 
+                    value="{{option}}"  
+                    ng-model="$parent.answerText">
+                    {{option.value}} 
+                  </label>
+                </div>
+              </div>
+              <!-- SHOW THE GRAPH -->
+              <div class="graph-container" ng-show="question.visible === false">
+                <b>Your Answer:</b> {{answerText}}
+                <br>
+                <b>All Answers:</b>
+                <div 
+                  class="answers" 
+                  ng-repeat="answer in answersSpecific" 
+                  ng-show="currentQuestion(question,answer)">
+                  {{answer.value}}: {{answer.count}}
+
+                </div>
+              </div>
+            
+              </div>
+            </div>
+          
+
+        
+        <div class="panel-footer question-footer">
+          <a href="#" role="button" class="btn btn-default question-submit" ng-click="submitSelectAnswer(question, answerText)" ng-show="question.visible === true">Submit</a>
+          <a href="#" role="button" class="btn btn-default question-submit" ng-click="shareAnswer(question, answerText)" ng-show="question.visible === false">Share</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MULTIPLE SELECT QUESTIONS -->
+  <!-- <div ng-repeat="question in questions track by $index" ng-show="question.inputType === 'multiple' && question.visible === true">
+    <div class="col-sm-4 col-md-3">
+      <div class="panel panel-default question-card">
+        <div class="panel-heading question-heading"><h4>{{question.category}}</h4></div>
+        <div class="panel-body question-body">
+          <h4 class="question-text">{{question.text}}</h4>
+            <div ng-repeat="option in question.answerOptions track by $index" class="checkbox">
+              <label>
+                <input type="checkbox" name="optionsCheckboxes" value="{{option}}" ng-model="answerText">{{option.value}}
+              </label>
+            </div>
+        </div>
+        <div class="panel-footer question-footer">
+          <a href="#" role="button" class="btn btn-default question-submit" ng-click="submitAnswer(question, answerText)">Submit</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+ <!-- END MULTIPLE SELECT QUESTIONS -->
+ 
+ <!-- NUMBER QUESTIONS -->
+  <div ng-repeat="question in questions track by $index" ng-show="question.inputType === 'number'">
+    <div class="col-sm-4 col-md-3">
+      <div class="panel panel-default question-card">
+        <div class="panel-heading question-heading"><h4>{{question.category}}</h4></div>
+        
+        <div class="panel-body question-body">
+          <div class="question-text-container">
+            <h4 class="question-text">{{question.text}}</h4>
+          </div>
+
+          <div class="content-container">
+            <!-- SHOW THE QUESTION -->
+              <div class="question-container" ng-show="question.visible === true">
+                <div class="input-container">
+                <label>
+                  <input type="number" class="form-control" id="number" ng-model="answerText" placeholder="Your Answer">
+                </label>
+                </div>
+              </div>
+
+            <!-- SHOW THE GRAPH -->
+              <div class="graph-container" ng-show="question.visible === false">
+                <b>Your Answer:</b> {{answerText}}
+                <br>
+                <b>All Answers:</b>
+                <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentQuestion(question,answer)">{{answer.answerText[0]}}
+                <!-- {{answer.value}}: {{answer.count}} -->
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="panel-footer question-footer">
+          <a href="#" role="button" class="btn btn-default question-submit" ng-click="submitInputAnswer(question, answerText)" ng-show="question.visible === true">Submit</a>
+          <a href="#" role="button" class="btn btn-default question-submit" ng-click="shareAnswer(question, answerText)" ng-show="question.visible === false">Share</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEXT QUESTIONS -->
+   <div ng-repeat="question in questions track by $index" ng-show="question.inputType === 'text'">
+    <div class="col-sm-4 col-md-3">
+      <div class="panel panel-default question-card">
+        <div class="panel-heading question-heading"><h4>{{question.category}}</h4></div>
+        
+        <div class="panel-body question-body">
+          <div class="question-text-container">
+            <h4 class="question-text">{{question.text}}</h4>
+          </div>
+
+          <div class="content-container">
+            <!-- SHOW THE QUESTION -->
+              <div class="question-container" ng-show="question.visible === true">
+                <div class="input-container">
+                <label>
+                  <input type="text" class="form-control" id="number" ng-model="answerText" placeholder="Your Answer">
+                </label>
+                </div>
+              </div>
+
+            <!-- SHOW THE GRAPH -->
+              <div class="graph-container" ng-show="question.visible === false">
+                <b>Your Answer:</b> {{answerText}}
+                <br>
+                <b>All Answers:</b>
+                <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentQuestion(question,answer)">{{answer.answerText[0]}}
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="panel-footer question-footer">
+          <a href="#" role="button" class="btn btn-default question-submit" ng-click="submitInputAnswer(question, answerText)" ng-show="question.visible === true">Submit</a>
+          <a href="#" role="button" class="btn btn-default question-submit" ng-click="shareAnswer(question, answerText)" ng-show="question.visible === false">Share</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+</div>

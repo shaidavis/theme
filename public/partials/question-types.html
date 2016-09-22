@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="row" ng-controller="AnswerCtrl">
+
+    <div class="col-sm-3">
+      <div class="panel panel-default question-card">
+        <div class="panel-heading question-heading"><h3>Panel Heading</h3></div>
+        <div class="panel-body question-body">
+          <h4 class="question-text">Single Select Question</h4>
+           
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Option 1
+              </label>
+            </div>
+
+            <div class="radio">
+              <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Option 2
+              </label>
+            </div>
+        </div>
+        <div class="panel-footer question-footer">
+          <a href="#" role="button" class="btn btn-default question-submit" ng-click="submitAnswer()">Submit</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-3">
+      <div class="panel panel-default question-card">
+        <div class="panel-heading question-heading"><h3>Panel Heading</h3></div>
+        <div class="panel-body question-body">
+          <h4 class="question-text">Multiple Select Question</h4>
+            <div class="checkbox">
+              <label><input type="checkbox"> Option 1</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox"> Option 2</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox"> Option 3</label>
+            </div>
+        </div>
+        <div class="panel-footer question-footer">
+          <a href="#" role="button" class="btn btn-default question-submit">Submit</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="panel panel-default question-card">
+        <div class="panel-heading question-heading"><h3>Panel Heading</h3></div>
+        <div class="panel-body question-body">
+          <h4 class="question-text">Integer Question</h4>
+            <input type="number" class="form-control" id="number">
+        </div>
+        <div class="panel-footer question-footer">
+          <a href="#" role="button" class="btn btn-default question-submit">Submit</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-3">
+      <div class="panel panel-default question-card">
+        <div class="panel-heading question-heading"><h3>Panel Heading</h3></div>
+        <div class="panel-body question-body">
+          <h4 class="question-text">Multiple Select Question</h4>
+            <input type="text" class="form-control" id="text">
+        </div>
+        <div class="panel-footer question-footer">
+          <a href="#" role="button" class="btn btn-default question-submit">Submit</a>
+        </div>
+      </div>
+    </div>
+
+
+ 
+
+
+
+  </div>
+</div>

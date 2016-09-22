@@ -1,0 +1,193 @@
+<div class="container-fluid">
+  <div class="row" ng-controller="QuestionCtrl">
+
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="panel panel-default question-card">
+        <div class="panel-heading general-heading"><h3>Create a Question!</h3></div>
+        <div class="panel-body">
+  
+			<form class="form-horizontal" name="questionCreator" ng-submit="questionCreator.$valid && createQuestion()">
+				<fieldset>
+
+				<br/>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="text">Question Text</label>  
+				  <div class="col-md-6">
+				  <input id="text" name="text" type="text" placeholder="Question Text" class="form-control input-md"  ng-model="text">
+				    
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="text">Answer 1</label>  
+				  <div class="col-md-6">
+				  	<input id="text" name="answers" type="text" placeholder="Answer 1" class="form-control input-md" ng-model="answer1">
+				  </div>
+
+				  <label class="col-md-4 control-label" for="text">Answer 2</label>  
+				  <div class="col-md-6">
+				 	 <input id="text" name="answers" type="text" placeholder="Answer 2" class="form-control input-md" ng-model="answer2">
+				  </div>
+
+				  <label class="col-md-4 control-label" for="text">Answer 3</label>  
+				  <div class="col-md-6">
+				 	 <input id="text" name="answers" type="text" placeholder="Answer 3" class="form-control input-md" ng-model="answer3">
+				  </div>
+
+				  <label class="col-md-4 control-label" for="text">Answer 4</label>  
+				  <div class="col-md-6">
+				 	 <input id="text" name="answers" type="text" placeholder="Answer 4" class="form-control input-md" ng-model="answer4">
+				  </div>
+
+				</div>
+
+				<!-- Multiple Radios -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="radios">Question Type</label>
+				  <div class="col-md-4">
+				  <div class="radio">
+				    <label for="radios-0">
+				      <input type="radio" name="radios" id="radios-0" value="text" ng-model="type">
+				      Text
+				    </label>
+					</div>
+				  <div class="radio">
+				    <label for="radios-1">
+				      <input type="radio" name="radios" id="radios-1" value="number" ng-model="type">
+				      Number
+				    </label>
+					</div>
+				  <div class="radio">
+				    <label for="radios-2">
+				      <input type="radio" name="radios" id="radios-2" value="single" ng-model="type">
+				      Single
+				    </label>
+					</div>
+				  <!-- <div class="radio">
+				    <label for="radios-3">
+				      <input type="radio" name="radios" id="radios-3" value="multiple" ng-model="type">
+				      Multiple
+				    </label>
+					</div> -->
+			  </div>
+			</div>
+
+				<!-- Multiple Radios -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="graph">Graph Type</label>
+				  <div class="col-md-4">
+				  <div class="radio">
+				    <label for="graph-0">
+				      <input type="radio" name="graph" id="graph-0" value="pie" ng-model="graph">
+				      Pie
+				    </label>
+					</div>
+				  <div class="radio">
+				    <label for="graph-1">
+				      <input type="radio" name="graph" id="graph-1" value="integer" ng-model="graph">
+				      Integer
+				    </label>
+					</div>
+				  <div class="radio">
+				    <label for="graph-2">
+				      <input type="radio" name="graph" id="graph-2" value="line" ng-model="graph">
+				      Line
+				    </label>
+					</div>
+				  <div class="radio">
+				    <label for="graph-3">
+				      <input type="radio" name="graph" id="graph-3" value="bar" ng-model="graph">
+				      Bar
+				    </label>
+					</div>
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="weight">Weight</label>  
+				  <div class="col-md-2">
+				  <input id="weight" name="weight" type="number" placeholder="10" class="form-control input-md" ng-model="weight" ng-min="1" ng-max="10">
+				  {{weight}}
+				    
+				  </div>
+				</div>
+
+				<!-- Multiple Radios -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="source">Source</label>
+				  
+				  <div class="col-md-4">
+				  	
+				  	<div class="radio">
+					    <label for="source-0">
+					      <input type="radio" name="source" id="source-0" value="input" checked="checked" ng-model="source">
+					      Input
+					    </label>
+					</div>
+
+					  <div class="radio">
+					    <label for="source-1">
+					      <input type="radio" name="source" id="source-1" value="facebook" ng-model="source">
+					      Facebook
+					    </label>
+					  </div>
+
+				  </div>
+				</div>
+
+				<!-- Multiple Radios (inline) -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="visible">Visibility</label>
+				  <div class="col-md-4"> 
+				    <label class="radio-inline active" for="visible-0">
+				      <input type="radio" name="visible" id="visible-0" value="true" checked ng-model="visible">
+				      true
+				    </label> 
+				    <label class="radio-inline" for="visible-1">
+				      <input type="radio" name="visible" id="visible-1" value="false" ng-model="visible">
+				      false
+				    </label>
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="category">Category</label>  
+				  <div class="col-md-4">
+				  <input id="category" name="category" type="text" placeholder="Category" class="form-control input-md"  ng-model="category">
+				    
+				  </div>
+				</div>
+
+
+
+          		<input role="button" class="btn btn-default question-submit" type="submit" value="Submit">
+			</fieldset>
+			</form>
+            
+        </div>
+        
+            
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<style type="text/css">
+  input.ng-dirty {
+    border-color: red; /*type of red*/
+  }   
+
+  input.ng-dirty.ng-valid{
+  border-color: #78FA89;
+}
+</style>
