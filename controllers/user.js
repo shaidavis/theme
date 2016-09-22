@@ -355,7 +355,7 @@ exports.authFacebook = function(req, res) {
 /*GET JSON IMPORT */
 exports.jsonImport = function(req, res){
   console.log(req.user.id);
-  res.json(../dummyUsers.json)
+  // res.json()
 
 };
 
