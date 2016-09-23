@@ -5,7 +5,13 @@ app.controller('AnswerCtrl', ['$scope', 'answers', 'questions', '$location', '$r
 	$scope.questions = questions.questions;
 	$scope.answers = answers.answers
 	$scope.answersSpecific = answers.answersSpecific
-	
+	$scope.categoryIcon = ''
+
+	$scope.categoryIcons = function (question){
+      if (question.category === "Preferences"){
+        $scope.categoryIcon = "http://i.imgur.com/tkh8pai.png"
+      }
+	}
   
 	$scope.currentQuestion = function(question, answer){
 

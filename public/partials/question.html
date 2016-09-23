@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="section-header col-sm-6 col-sm-offset-3">
-      <h1>All Questions</h1>
+      <h1 style="color:white; font-size: 50px; text-transform: uppercase;">All Questions</h1>
     </div>
   </div>
   <div class="row" ng-controller="AnswerCtrl" >
@@ -10,7 +10,24 @@
   <div ng-repeat="question in questions track by $index" ng-show="question.inputType === 'single'" >
     <div class="col-sm-4 col-md-3">
       <div class="panel panel-default question-card">
-        <div class="panel-heading question-heading"><h4>{{question.category}}</h4></div>
+        <div class="panel-heading question-heading">
+          <h4>
+          <span ng-switch on="question.category">
+            <img ng-switch-when="Preferences" src='http://i.imgur.com/a0GQIN5.png' class="category-icon">
+            <img ng-switch-when="Demographics" src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
+            <img ng-switch-when="Habits" src='http://i.imgur.com/xfzXFDr.png' class="category-icon">
+            <img ng-switch-when="Health" src='http://i.imgur.com/y7qN843.png' class="category-icon">
+            <img ng-switch-when="Family" src='http://i.imgur.com/htJgY7d.png' class="category-icon">
+            <img ng-switch-when="Tidbits" src='http://i.imgur.com/J9C2l9D.png' class="category-icon">
+            <img ng-switch-when="Romance" src='http://i.imgur.com/htJgY7d.png' class="category-icon">
+            <img ng-switch-when="History" src='http://i.imgur.com/htJgY7d.png' class="category-icon">
+            <img ng-switch-when="Facebook" src='http://i.imgur.com/HbMNcPk.png' class="category-icon">
+            <img ng-switch-when="Media" src='http://i.imgur.com/NWy7czC.png' class="category-icon">
+            <img ng-switch-default src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
+          </span>
+          {{question.category}}
+          </h4>
+        </div>
         <div class="panel-body question-body">
           <h4 class="question-text">{{question.text}}</h4>
             
@@ -47,8 +64,8 @@
 
         
         <div class="panel-footer question-footer">
-          <a href="#" role="button" class="btn btn-default question-submit" ng-click="submitSelectAnswer(question, answerText)" ng-show="question.visible === true">Submit</a>
-          <a href="#" role="button" class="btn btn-default question-submit" ng-click="shareAnswer(question, answerText)" ng-show="question.visible === false">Share</a>
+          <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitSelectAnswer(question, answerText)" ng-show="question.visible === true">Submit</a>
+          <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareAnswer(question, answerText)" ng-show="question.visible === false">Share</a>
         </div>
       </div>
     </div>
@@ -79,7 +96,25 @@
   <div ng-repeat="question in questions track by $index" ng-show="question.inputType === 'number'">
     <div class="col-sm-4 col-md-3">
       <div class="panel panel-default question-card">
-        <div class="panel-heading question-heading"><h4>{{question.category}}</h4></div>
+        <div class="panel-heading question-heading">
+          <h4>
+          
+          <span ng-switch on="question.category">
+            <img ng-switch-when="Preferences" src='http://i.imgur.com/a0GQIN5.png' class="category-icon">
+            <img ng-switch-when="Demographics" src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
+            <img ng-switch-when="Habits" src='http://i.imgur.com/xfzXFDr.png' class="category-icon">
+            <img ng-switch-when="Health" src='http://i.imgur.com/y7qN843.png' class="category-icon">
+            <img ng-switch-when="Family" src='http://i.imgur.com/htJgY7d.png' class="category-icon">
+            <img ng-switch-when="Tidbits" src='http://i.imgur.com/J9C2l9D.png' class="category-icon">
+            <img ng-switch-when="Romance" src='http://i.imgur.com/htJgY7d.png' class="category-icon">
+            <img ng-switch-when="History" src='http://i.imgur.com/htJgY7d.png' class="category-icon">
+            <img ng-switch-when="Facebook" src='http://i.imgur.com/HbMNcPk.png' class="category-icon">
+            <img ng-switch-when="Media" src='http://i.imgur.com/NWy7czC.png' class="category-icon">
+            <img ng-switch-default src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
+          </span>
+          {{question.category}}
+          </h4>
+        </div>
         
         <div class="panel-body question-body">
           <div class="question-text-container">
@@ -109,8 +144,8 @@
         </div>
 
         <div class="panel-footer question-footer">
-          <a href="#" role="button" class="btn btn-default question-submit" ng-click="submitInputAnswer(question, answerText)" ng-show="question.visible === true">Submit</a>
-          <a href="#" role="button" class="btn btn-default question-submit" ng-click="shareAnswer(question, answerText)" ng-show="question.visible === false">Share</a>
+          <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitInputAnswer(question, answerText)" ng-show="question.visible === true">Submit</a>
+          <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareAnswer(question, answerText)" ng-show="question.visible === false">Share</a>
         </div>
       </div>
     </div>
@@ -120,8 +155,25 @@
    <div ng-repeat="question in questions track by $index" ng-show="question.inputType === 'text'">
     <div class="col-sm-4 col-md-3">
       <div class="panel panel-default question-card">
-        <div class="panel-heading question-heading"><h4>{{question.category}}</h4></div>
-        
+        <div class="panel-heading question-heading">
+          <h4>
+          
+           <span ng-switch on="question.category">
+            <img ng-switch-when="Preferences" src='http://i.imgur.com/a0GQIN5.png' class="category-icon">
+            <img ng-switch-when="Demographics" src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
+            <img ng-switch-when="Habits" src='http://i.imgur.com/xfzXFDr.png' class="category-icon">
+            <img ng-switch-when="Health" src='http://i.imgur.com/y7qN843.png' class="category-icon">
+            <img ng-switch-when="Family" src='http://i.imgur.com/htJgY7d.png' class="category-icon">
+            <img ng-switch-when="Tidbits" src='http://i.imgur.com/J9C2l9D.png' class="category-icon">
+            <img ng-switch-when="Romance" src='http://i.imgur.com/htJgY7d.png' class="category-icon">
+            <img ng-switch-when="History" src='http://i.imgur.com/htJgY7d.png' class="category-icon">
+            <img ng-switch-when="Facebook" src='http://i.imgur.com/HbMNcPk.png' class="category-icon">
+            <img ng-switch-when="Media" src='http://i.imgur.com/NWy7czC.png' class="category-icon">
+            <img ng-switch-default src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
+          </span>
+          {{question.category}}
+          </h4>
+        </div>        
         <div class="panel-body question-body">
           <div class="question-text-container">
             <h4 class="question-text">{{question.text}}</h4>
@@ -149,8 +201,8 @@
         </div>
 
         <div class="panel-footer question-footer">
-          <a href="#" role="button" class="btn btn-default question-submit" ng-click="submitInputAnswer(question, answerText)" ng-show="question.visible === true">Submit</a>
-          <a href="#" role="button" class="btn btn-default question-submit" ng-click="shareAnswer(question, answerText)" ng-show="question.visible === false">Share</a>
+          <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitInputAnswer(question, answerText)" ng-show="question.visible === true">Submit</a>
+          <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareAnswer(question, answerText)" ng-show="question.visible === false">Share</a>
         </div>
       </div>
     </div>
