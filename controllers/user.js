@@ -354,8 +354,23 @@ exports.authFacebook = function(req, res) {
 
 /*GET JSON IMPORT */
 exports.jsonImport = function(req, res){
-  console.log(req.user.id);
-  // res.json()
+  console.log(req.user)
+
+  var data = 
+    {
+    "_id": "57e3f798d0e263b3610cccaa",
+    "isActive": true,
+    "picture": "http://placehold.it/32x32",
+    "age": 33,
+    "relationshipStatus": "complicated",
+    "firstName": "Hudson",
+    "lastName": "Yates",
+    "gender": "male",
+    "company": "SKINSERVE",
+    "email": "hudsonyates@skinserve.com"
+  }
+  
+  res.send(data)
 
 };
 

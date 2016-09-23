@@ -21,8 +21,10 @@
         resetPassword: function(data) {
           return $http.post('/reset', data);
         },
-        jsonImport: function(id) {
-          return $http.get('/account/import')
+        jsonImport: function() {
+          return $http.get('/account/import').success(function(data){
+            console.log(data)
+          })
         }
     };
   }
