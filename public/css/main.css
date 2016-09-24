@@ -1,36 +1,3 @@
-.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
-    position: absolute;
-    margin-top: 2px;
-    margin-left: -25px;
-}
-
-input[type='radio'] {
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    border: 1px solid darkgray;
-    border-radius: 50%;
-    outline: none;
-    box-shadow: 0 0 1px 0px gray inset;
-}
-
-input[type='radio']:hover {
-  box-shadow:0 0 5px 0px orange inset;
-}
-
-input[type='radio']:before {
-  content:'';
-  display: block;
-  width: 60%;
-  height: 60%;
-  margin: 20% 20% auto;
-  border-radius: 70%;  
-}
-input[type='radio']:checked:before {
-  background:#d43b2c;
-}
-
-@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CRaleway:100,300,600,700,800");
 
 /* Scaffolding
 /* ------------------------- */
@@ -320,6 +287,8 @@ textarea {
 body {
     background-image: url("http://i.imgur.com/X2M6fef.png");
     background-repeat: repeat;
+  background-attachment: fixed
+
 
 }
 
@@ -398,7 +367,6 @@ body {
 }
 
 
-
 .navbar-themefyi .navbar-nav > li.active > a {
   border-bottom-color: #d43a2c;
 }
@@ -407,3 +375,63 @@ body {
 .navbar-themefyi .navbar-nav > li > a {    
   border-bottom: 4px solid transparent;
 }
+
+.header-icon {
+  color: rgba(232, 76, 61, 0.59);
+}
+
+/*redesign of radio buttons and input fields*/
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: rgba(238, 162, 54, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(238, 162, 54, 0.6);
+  outline: 0 none;
+}
+
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    position: absolute;
+    margin-top: 2px;
+    margin-left: -25px;
+}
+
+input[type='radio'] {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid darkgray;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: 0 0 1px 0px gray inset;
+}
+
+input[type='radio']:hover {
+  box-shadow:0 0 5px 0px orange inset;
+}
+
+input[type='radio']:before {
+  content:'';
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% 20% auto;
+  border-radius: 70%;  
+}
+input[type='radio']:checked:before {
+  background:#d43b2c;
+}
+
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CRaleway:100,300,600,700,800");
