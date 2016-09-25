@@ -6,11 +6,11 @@ ChartsCtrl.$inject = ['$scope'];
 
 function ChartsCtrl($scope, Transaction) {
   $scope.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
-  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+  $scope.labels = ["Jan", "Feb", "Mar"];
   $scope.series = ['Series A', 'Series B'];
   $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
+    [65, 59, 80],
+    [28, 48, 40]
   ];
 
   // $scope.data = Admin.chart;

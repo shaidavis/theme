@@ -6,9 +6,30 @@ var questionService = {
 
     getAll: function() {
       return $http.get('/questions').then(function(data) {
+        for (i = 0; i <data.data.length; i ++){
+          if(data.data[i].visible === true){
+            console.log(JSON.stringify(data.data[i].text) + " is unanswered")
+            questionService.questions.push(data.data[i])
+          } else {
+            console.log(JSON.stringify(data.data[i].text) + "is answered")
+          }
+        }
+        console.log("service data", data)
         
-        angular.copy(data.data, questionService.questions);
+        // angular.copy(data.data, questionService.questions);
       });
+    },
+
+    getUserAnsweredQuestions: function() {
+      return $http.get('/questions/user/answered').then(function(data){
+        for (i = 0; i <data.data.length; i ++){
+          if(data.data[i].answerText[i]){
+            console.log(data.data[i].questionID.text + ": " + JSON.stringify(data.data[i].answerText[i].value))
+         } else {
+            console.log(data.data[i].questionID.text)
+         }
+        }
+      })
     },
 
     get: function(id) {

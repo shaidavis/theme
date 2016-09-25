@@ -2,10 +2,12 @@
 
   <div class="row">
     <div class="section-header col-sm-6 col-sm-offset-3">
-      <h1 style="color:white; font-size: 50px; text-transform: uppercase;">All Questions</h1>
+      <h1 style="color:white; font-size: 50px; text-transform: uppercase; text-shadow:1px 1px 1px black">All Questions</h1>
     </div>
   </div>
-  <div class="row" ng-controller="AnswerCtrl" >
+  <div class="row">
+
+
   <!-- SINGLE SELECT QUESTIONS -->
   <div ng-repeat="question in questions track by $index" ng-show="question.inputType === 'single'" >
     <div class="col-sm-4 col-md-3">
@@ -32,6 +34,8 @@
           <h4 class="question-text">{{question.text}}</h4>
             
             <div class="content-container" >
+
+
               <!-- SHOW THE QUESTION -->
               <div class="question-container" ng-show="question.visible === true">
                 <div ng-repeat="option in question.answerOptions track by $index" class="radio">
@@ -44,20 +48,30 @@
                   </label>
                 </div>
               </div>
-              <!-- SHOW THE GRAPH -->
-              <div class="graph-container" ng-show="question.visible === false">
-                <b>Your Answer:</b> {{answerText}}
-                <br>
-                <b>All Answers:</b>
-                <div 
-                  class="answers" 
-                  ng-repeat="answer in answersSpecific" 
-                  ng-show="currentQuestion(question,answer)">
-                  {{answer.value}}: {{answer.count}}
-
+                <!-- SHOW THE ANSWERS -->
+                <!-- When the question visibility is set to 'false' it means it's been answered -->
+              <div class="graph-container"  ng-show="question.visible === false">                
+                  <b>Your Answer:</b> {{answerText}}
+                  <br>
+                  <b>All Answers:</b>
+                  <!-- Retrieve and show ONLY the answers to the current question -->
+                  <div 
+                    class="answers" 
+                    ng-repeat="answer in answersSpecific" 
+                    ng-show="currentQuestion(question,answer)">
+                    
+                    {{answer.value}}: {{answer.count}}
+                    <!-- THE GRAPH -->
+                    <div ng-controller="ChartsCtrl">
+    
+                        <canvas id="bar" class="chart chart-bar"
+                          chart-data="data" chart-labels="labels" chart-series="series"></canvas>
+                        <canvas class="chart chart-line" chart-data="data" chart-labels="labels" 
+                        chart-series="series" chart-click="onClick"></canvas> 
+                    </div>
+                  </div>
                 </div>
-              </div>
-            
+
               </div>
             </div>
           

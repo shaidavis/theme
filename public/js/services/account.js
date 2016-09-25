@@ -22,8 +22,8 @@
           return $http.post('/reset', data);
         },
         jsonImport: function() {
-          return $http.get('/account/import').success(function(data){
-            console.log(data)
+          return $http.put('/account/import').success(function(data){
+            console.log("data from service:", data)
           })
         }
     };

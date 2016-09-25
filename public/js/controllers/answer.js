@@ -5,13 +5,8 @@ app.controller('AnswerCtrl', ['$scope', 'answers', 'questions', '$location', '$r
 	$scope.questions = questions.questions;
 	$scope.answers = answers.answers
 	$scope.answersSpecific = answers.answersSpecific
-	$scope.categoryIcon = ''
+	// $scope.categoryIcon = ''
 
-	$scope.categoryIcons = function (question){
-      if (question.category === "Preferences"){
-        $scope.categoryIcon = "http://i.imgur.com/tkh8pai.png"
-      }
-	}
   
 	$scope.currentQuestion = function(question, answer){
 
@@ -34,7 +29,7 @@ app.controller('AnswerCtrl', ['$scope', 'answers', 'questions', '$location', '$r
 
 	$scope.submitSelectAnswer = function (question, answerText) {		
 		console.log("answerTextType:", typeof answerText)
-		//for "select" answers, i need to turn the string into an object so I can retrieve just the value
+		//for "select" answers, i need to turn the string of the answerText into an object so I can retrieve just the value
 		let answerTextObject = JSON.parse(answerText)
 		
 		console.log("answerTextObject.value:", answerTextObject.value)

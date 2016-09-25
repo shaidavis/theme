@@ -34,6 +34,7 @@ function ProfileCtrl($scope, $rootScope, $location, $window, $auth, Account) {
     function importFromJSON(){
       alert("Import from JSON!")
       Account.jsonImport()
+      console.log("controller profile", $scope.profile)
 
     }
 

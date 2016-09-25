@@ -15,6 +15,8 @@ var request = require('request');
 // Load environment variables from .env file
 dotenv.load();
 
+
+
 // Models
 var Answer = require('./models/Answer');
 var Question = require('./models/Question');
@@ -127,7 +129,9 @@ app.get('/answers/:answer', answerController.returnSingleAnswer);
 // app.get('/questions/:answer', answerController.findQuestionOfAnswer);
 app.get('/questions/:question/answers', answerController.allAnswersToQuestion);
 app.post('/answer', answerController.answerPost);
-app.get('/account/import', userController.jsonImport)
+app.put('/account/import', userController.jsonImport);
+app.get('/questions/user/answered', questionController.getUserAnsweredQuestions)
+app.get('/questions/user/unanswered', questionController.getUserUnansweredQuestions)
 
 
 
