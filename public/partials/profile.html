@@ -86,10 +86,13 @@
     <div class="panel-body">
       <div class="form-horizontal">
         <legend>Linked Accounts</legend>
-        <div class="form-group">
+        <div class="form-group" ng-controller="QuestionCtrl">
           <div class="col-sm-offset-3 col-sm-4">
             <p>
               <a href="#" ng-click="importFromJSON()">Import JSON data</a>
+            </p>
+            <p>
+              <a href="#" ng-click="getUserAnsweredQuestions()">get answered questions</a>
             </p>
             <p>
               <a href="#" ng-click="unlink('facebook')" ng-if="currentUser.facebook" class="text-danger">Unlink your Facebook account</a>

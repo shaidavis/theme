@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router()
 
 var Answer = require('../models/Answer');
+var User = require('../models/User');
+var Question = require('../models/Question')
 /**
  * GET /all answers to all questions
  '/answers'*/
@@ -29,7 +31,7 @@ exports.allAnswersToQuestion = function(req, res, next) {
   Answer.find({questionID:req.question._id},function (err, allAnswers){
       if (err) {return next(err); }
       if (!allAnswers) {return next(new Error('can\'t find answers')); }
-      console.log("allAnswers are:", allAnswers)
+      // console.log("allAnswers are:", allAnswers)
   res.json(allAnswers)    
   }) 
 };

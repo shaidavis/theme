@@ -269,7 +269,7 @@ exports.resetPost = function(req, res, next) {
       var mailOptions = {
         from: 'support@yourdomain.com',
         to: user.email,
-        subject: 'Your Mega Boilerplate password has been changed',
+        subject: 'Your theMe.fyi password has been changed',
         text: 'Hello,\n\n' +
         'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
       };
@@ -354,7 +354,7 @@ exports.authFacebook = function(req, res) {
 
 /*GET JSON IMPORT */
 exports.jsonImport = function(req, res){
-  console.log(req.user)
+  console.log("before import:", req.user)
 
   var data = 
     {
@@ -365,10 +365,26 @@ exports.jsonImport = function(req, res){
     "relationshipStatus": "complicated",
     "firstName": "Hudson",
     "lastName": "Yates",
-    "gender": "male",
+    "name": "Hudson Yates",
+    "gender": "boy",
     "company": "SKINSERVE",
     "email": "hudsonyates@skinserve.com"
   }
+  if (data.gender){
+    req.user.gender = data.gender  
+  }
+  if (data.picture){
+    req.user.picture = data.picture
+  }
+  if (data.name){
+    req.user.name = data.name
+  }
+  if (data.email){
+    req.user.email = data.email
+  }
+
+  console.log("after import:", req.user)
+  req.user.save()
   
   res.send(data)
 

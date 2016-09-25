@@ -1,4 +1,4 @@
-var app = angular.module('MyApp', ['ngRoute', 'satellizer']);
+var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
   app.config(['$routeProvider','$locationProvider', '$authProvider', function($routeProvider, $locationProvider, $authProvider) {
 
 
@@ -7,6 +7,10 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer']);
     $routeProvider
       .when('/', {
         templateUrl: 'partials/home.html'
+      })
+      .when('/charts', {
+        templateUrl: 'partials/charts.html',
+        controller: 'ChartsCtrl'
       })
       .when('/contact', {
         templateUrl: 'partials/contact.html',
@@ -63,7 +67,7 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer']);
     $authProvider.signupUrl = '/signup';
     $authProvider.facebook({
       url: '/auth/facebook',
-      clientId: '980220002068787',
+      clientId: '538603316330604',
       redirectUri: 'http://localhost:3000/auth/facebook/callback'
     });
 

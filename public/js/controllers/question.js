@@ -66,6 +66,10 @@ app.controller('QuestionCtrl', ['$scope', 'questions', '$location', '$route', '$
 
   }
 
+  $scope.getUserAnsweredQuestions = function(){
+    console.log("in getUserAnsweredQuestions controller function")
+    questions.getUserAnsweredQuestions()
+  }
 
  
 }]);
