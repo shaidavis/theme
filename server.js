@@ -122,7 +122,8 @@ app.post('/reset/:token', userController.resetPost);
 app.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink);
 app.post('/auth/facebook', userController.authFacebook);
 app.get('/auth/facebook/callback', userController.authFacebookCallback);
-app.get('/questions', questionController.questionsGet);
+app.get('/question/all-questions', questionController.questionsGet);
+app.get('/question/random', questionController.questionsGetRandom);
 app.post('/question', questionController.questionPost);
 app.get('/answers', answerController.answersGet);
 app.get('/answers/:answer', answerController.returnSingleAnswer);
@@ -130,8 +131,9 @@ app.get('/answers/:answer', answerController.returnSingleAnswer);
 app.get('/questions/:question/answers', answerController.allAnswersToQuestion);
 app.post('/answer', answerController.answerPost);
 app.put('/account/import', userController.jsonImport);
-app.get('/questions/user/answered', questionController.getUserAnsweredQuestions)
-app.get('/questions/user/unanswered', questionController.getUserUnansweredQuestions)
+app.get('/questions/user/answered', answerController.getUsersAnsweredQs)
+// app.get('/questions/user/unanswered', questionController.getUserUnansweredQuestions)
+
 
 
 

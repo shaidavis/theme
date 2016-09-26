@@ -16,3 +16,14 @@ var QuestionSchema = new mongoose.Schema({
 var Question = mongoose.model('Question', QuestionSchema);
 
 module.exports = Question;
+
+
+Question.random = function(callback) {
+  this.count(function(err, count) {
+    if (err) {
+      return callback(err);
+    }
+    var rand = Math.floor(Math.random() * count);
+    this.findOne().skip(rand).exec(callback);
+  }.bind(this));
+ };

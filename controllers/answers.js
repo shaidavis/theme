@@ -40,18 +40,34 @@ exports.allAnswersToQuestion = function(req, res, next) {
  * POST /answer
  */
 exports.answerPost = function(req, res, next) {
-  console.log("I'm in the route!")
+  console.log("5. I'm in the route!")
   console.log(req.user)
   req.body.userID = req.user.id;  
-  
+  console.log(req.body)
   var answer = new Answer(req.body);
-  console.log("answer from the post route:", answer)
+  console.log("6. answer from the post route:", answer)
   answer.save(function(err, answer){
     if(err){ return next(err); }
 
+    console.log(answer)
+    console.log("req.user.answers BEFORE PUSH", req.user.answers)
+    req.user.answers.push(answer)
+    console.log("req.user.answers AFTER PUSH", req.user.answers)
+    req.user.save()
     res.json(answer);
   });
 };
 
+// GET USERS ANSWERED QUESTIONS
+exports.getUsersAnsweredQs = function (req, res, next){
+  // req.body.userID = req.user.id;  
+  console.log("****", req.user.id)
+  User.findById(req.user.id)
+      .populate('answers')
+      .exec(function (err, userAnswers){
+      console.log(userAnswers)
+      res.json(userAnswers)
+    })
+}
 
 

@@ -36,11 +36,71 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
         controller: 'ForgotCtrl',
         resolve: { skipIfAuthenticated: skipIfAuthenticated }
       })
-
       .when('/question', {
         templateUrl: 'partials/question.html',
         controller: 'AnswerCtrl',
         resolve: {
+          questionPromise: ['questions', function(questions){
+          return questions.getRandomQuestion();
+          }],
+          answerPromise: ['answers', function(answers){
+          return answers.getAllAnswers();
+          }] 
+        }
+      })   
+      .when('/single-random-q', {
+        templateUrl: 'partials/single-random-q.html',
+        controller: 'AnswerCtrl',
+        resolve: {
+          getAllQuestionsPromise: ['questions', function(questions){
+          return questions.getAll();
+          }],
+          getUserAnsweredQuestionsPromise: ['questions', function(questions){
+          return questions.getUserAnsweredQuestions();
+          }]
+          // ,
+          // getRandomUnansweredQPromise: ['questions', function(questions){
+          // return questions.getRandomUnansweredQforUser();
+          // }]          
+        }   
+      })    
+      .when('/all-questions', {
+        templateUrl: 'partials/all-questions.html',
+        controller: 'AnswerCtrl',
+        resolve: {
+          questionPromise: ['questions', function(questions){
+          return questions.getAll();
+          }],
+          answerPromise: ['answers', function(answers){
+          return answers.getAllAnswers();
+          }]
+
+          
+        }
+      })
+      .when('/all-answers', {
+        templateUrl: 'partials/all-questions.html',
+        controller: 'AnswerCtrl',
+        resolve: {
+          questionPromise: ['questions', function(questions){
+          return questions.getAll();
+          }],
+          answerPromise: ['answers', function(answers){
+          return answers.getAllAnswers();
+          }]
+          
+        }
+      })
+      .when('/user/answers', {
+        templateUrl: 'partials/all-answers.html',
+        controller: 'AnswerCtrl',
+        resolve: {
+
+          userAnswers: ['answers', function(answers){
+          var userId = JSON.parse(localStorage.user)._id;
+          return answers.getUsersAnsweredQs(userId);
+          }],
+    
           questionPromise: ['questions', function(questions){
           return questions.getAll();
           }],

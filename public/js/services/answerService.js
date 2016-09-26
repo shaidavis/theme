@@ -6,6 +6,7 @@ var answerService = {
 
     answers:[],
     answersSpecific:[],
+    usersAnswers:[],
 
 
     getAllAnswers: function() {
@@ -21,6 +22,12 @@ var answerService = {
     //     res.send();
     //   });
     // },
+
+    getUsersAnsweredQs: function(userid){
+      return $http.get('/questions/' + userid + '/answered').then(function(data) {
+       angular.copy(data.data, answerService.usersAnswers);
+      });
+    },
 
     // GET DISPLAY EACH ANSWER SUBMITTED. IN THE QUESTION.HTML, USE {{answer.answerText[0].value}}
     getAllAnswersToThisInputQ: function(id){
@@ -41,7 +48,7 @@ var answerService = {
       console.log("inside the getAllAnswersToThisQ - service ")
       return $http.get('/questions/'+id+'/answers').success(function(data){
         // console.log("OK, I'm back from the answer route!")
-        console.log("here are the answers:", data)
+        // console.log("getAllAnswersToThisSelectQ Here are the answers:", data)
         // console.log("Type of data:", typeof data)
         var answer1 = {
           count:0,
@@ -63,7 +70,6 @@ var answerService = {
           value: '',
           questionID:''
         }
-
 
         for (i = 0; i < data.length; i ++) {
           
@@ -89,7 +95,7 @@ var answerService = {
         answerService.answersSpecific.push(answer2)
         answerService.answersSpecific.push(answer3)
         answerService.answersSpecific.push(answer4)
-        console.log('answerService.answersSpecific:', answerService.answersSpecific)
+        console.log('getAllAnswersToThisSelectQ: answerService.answersSpecific:', answerService.answersSpecific)
       })
 
     },
@@ -97,14 +103,14 @@ var answerService = {
 
 
     createAnswer: function(answer) {
-      console.log("createAnswer: I'm in the answer service!")
-      console.log("answer:", answer)
+      console.log("3. createAnswer: I'm in the answer service!")
+      console.log("4. answer:", answer)
 
 
 
       return $http.post('/answer', answer).success(function(data){
-        console.log("I'm back from the answer route!")
-        console.log("here's the answer:", data)
+        console.log("7. I'm back from the answer route!")
+        console.log("8. here's the answer:", data)
         answerService.answers.push(data);
       });
     },
