@@ -1,8 +1,7 @@
 //The QuestionCtrl is for issues related to the admin's creation and display of Questions
 app.controller('QuestionCtrl', ['$scope', 'questions', '$location', '$route', '$window', function($scope, questions, $location, $route, $window) {
 
-
-    
+   // $scope.singleRandomQ = questions.unansweredRandomQ[0]
 
    $scope.createQuestion = function() {
    	console.log("CreateQuestion activated!")
@@ -70,6 +69,13 @@ app.controller('QuestionCtrl', ['$scope', 'questions', '$location', '$route', '$
     console.log("in getUserAnsweredQuestions controller function")
     questions.getUserAnsweredQuestions()
   }
+
+  // $scope.getRandomUnansweredQforUser = function(){
+  //    console.log("1. inside the controller getRandomUnansweredQforUser function")
+  //    questions.getRandomUnansweredQforUser()
+  //    console.log($scope.singleRandomQ)
+
+  // }
 
  
 }]);

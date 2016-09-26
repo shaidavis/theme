@@ -282,6 +282,13 @@ textarea {
   text-transform: uppercase;
 }
 
+
+/*MY STYLES*/
+
+/*redesigning bootstrap styles*/
+.btn-link:hover{
+  text-decoration: none;
+}
 /* BODY */
 
 body {
@@ -320,6 +327,10 @@ body {
 
 .question-text-container {
   min-height: 40px
+}
+
+.random-question-text-container {
+  padding-top:40px;
 }
 
 .question-text {

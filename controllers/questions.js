@@ -1,6 +1,6 @@
 var Question = require('../models/Question');
 var Answer = require('../models/Answer');
-// var User = require('../models/User');
+var User = require('../models/User');
 
 
 
@@ -17,40 +17,48 @@ exports.questionsGet = function(req, res, next) {
   });
 };
 
+//GET A RANDOM QUESTION - THIS WORKS - backup copy of function
+exports.questionsGetRandom = function(req, res, next) {  
+  Question.random(function(err, randomQuestion){
+    console.log(randomQuestion);
+    res.json(randomQuestion);
+  });  
+};
+
+
+
+// exports.getUserRandomUnansweredQ = function(req, res, next) {  
+//   Question.random(function(err, randomQuestion){
+//    let qID = randomQuestion._id;
+//    console.log("qid is :", qID)
+//    console.log(randomQuestion);
+//    res.json(randomQuestion);
+//   });  
+// };
+
 
 // exports.getUserAnsweredQuestions = function(req, res, next) {
 //   console.log("in route for getUserAnsweredQuestions")
 //   var userid = req.user.id
-//   Answer.find({userID:userid},function (err, userAnsweredQuestions){
+//   Answer.find({ userID: userid })
+//   .populate('questionID')
+//   // .populate('answerText')
+//   .exec(function (err, userAnsweredQuestions) {
+//     if (err) return handleError(err);
+//     console.log("user's answered questions are:", userAnsweredQuestions);
+//     res.json(userAnsweredQuestions)
+//   });
+// };
+
+// exports.getUserUnansweredQuestions = function(req, res, next) {
+//   var userid = req.user.id
+//   Answer.find({userID:userid},function (err, userUnansweredQuestions){
 //     if (err) {return next(err); }
 //     if (!userAnsweredQuestions) {return next(new Error('user has no answers in system')); }
 //     console.log("user's answered questions are:", userAnsweredQuestions)
 //   res.json(userAnsweredQuestions)
 //   });
 // };
-
-exports.getUserAnsweredQuestions = function(req, res, next) {
-  console.log("in route for getUserAnsweredQuestions")
-  var userid = req.user.id
-  Answer.find({ userID: userid })
-  .populate('questionID')
-  // .populate('answerText')
-  .exec(function (err, userAnsweredQuestions) {
-    if (err) return handleError(err);
-    console.log("user's answered questions are:", userAnsweredQuestions);
-    res.json(userAnsweredQuestions)
-  });
-};
-
-exports.getUserUnansweredQuestions = function(req, res, next) {
-  var userid = req.user.id
-  Answer.find({userID:userid},function (err, userUnansweredQuestions){
-    if (err) {return next(err); }
-    if (!userAnsweredQuestions) {return next(new Error('user has no answers in system')); }
-    console.log("user's answered questions are:", userAnsweredQuestions)
-  res.json(userAnsweredQuestions)
-  });
-};
   
 
 /**

@@ -25,18 +25,51 @@
             Contact
           </a>
         </li>
-        <li ng-class="{ active: isActive('/question')}">
-          <a href="/question">
-            <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
-            Questions
-          </a>
-        </li>
-        <li ng-class="{ active: isActive('/question-creator')}">
-          <a href="/question-creator">
-            <i class="fa fa-magic header-icon" aria-hidden="true"></i>
-            Question Creator
-          </a>
-        </li>
+
+        <ul ng-if="isAuthenticated()" class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+              Questions <i class="caret"></i>
+            </a>
+              <ul class="dropdown-menu">
+              <li ng-class="{ active: isActive('/question')}">
+              <a href="/question">
+                <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
+                Random Question
+              </a>
+            </li>
+            <li ng-class="{ active: isActive('/single-random-q')}">
+              <a href="/single-random-q">
+                <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
+                Unanswered Random Question
+              </a>
+            <li class="divider"></li>
+            </li>
+            <li ng-class="{ active: isActive('/user/answers')}">
+              <a href="/all-answers">
+                <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
+                All Answers from User
+              </a>
+            </li>
+            <li ng-class="{ active: isActive('/all-questions')}">
+              <a href="/all-questions">
+                <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
+                All Questions
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li ng-class="{ active: isActive('/question-creator')}">
+              <a href="/question-creator">
+                <i class="fa fa-magic header-icon" aria-hidden="true"></i>
+                Question Creator
+              </a>
+            </li>
+            </ul>
+          </li>
+        </ul>
+
+          
+
         <li ng-class="{ active: isActive('/charts')}">
           <a href="/charts">
             <i class="fa fa-pie-chart header-icon" aria-hidden="true"></i>
@@ -50,6 +83,7 @@
           </a>
         </li>
       </ul>
+
       <ul ng-if="isAuthenticated()" class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" data-toggle="dropdown" class="navbar-avatar dropdown-toggle">

@@ -7,15 +7,18 @@
   </div>
   <div class="row">
 
-  
+
+
+<a href="#" ng-click="getRandomUnansweredQforUser()">get random unanswered q</a>
+{{singleRandomQ.text}}
 
   <!-- SINGLE SELECT QUESTIONS -->
-  <div ng-show="randomQuestion.inputType === 'single'" >
+  <div ng-show="singleRandomQ.inputType === 'single'" >
     <div class="col-sm-6 col-sm-offset-3">
       <div class="panel panel-default question-card">
         <div class="panel-heading question-heading">
           <h4>
-          <span ng-switch on="randomQuestion.category">
+          <span ng-switch on="singleRandomQ.category">
             <img ng-switch-when="Preferences" src='http://i.imgur.com/a0GQIN5.png' class="category-icon">
             <img ng-switch-when="Demographics" src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
             <img ng-switch-when="Habits" src='http://i.imgur.com/xfzXFDr.png' class="category-icon">
@@ -28,20 +31,20 @@
             <img ng-switch-when="Media" src='http://i.imgur.com/NWy7czC.png' class="category-icon">
             <img ng-switch-default src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
           </span>
-          {{randomQuestion.category}}
+          {{singleRandomQ.category}}
           </h4>
         </div>
         <div class="panel-body question-body">
           <div class="question-text-container random-question-text-container">
-            <h3 class="question-text">{{randomQuestion.text}}</h3>
+            <h3 class="question-text">{{singleRandomQ.text}}</h3>
           </div>
             <div class="content-container" >
 
 
 
               <!-- SHOW THE QUESTION -->
-              <div class="question-container" ng-show="randomQuestion.visible === true">
-                <div ng-repeat="option in randomQuestion.answerOptions track by $index" class="radio">
+              <div class="question-container" ng-show="singleRandomQ.visible === true">
+                <div ng-repeat="option in singleRandomQ.answerOptions track by $index" class="radio">
                   <label>
                     <input type="radio" 
                     name="optionsRadios" 
@@ -54,12 +57,12 @@
               </div>
                 <!-- SHOW THE ANSWERS -->
                 <!-- When the question visibility is set to 'false' it means it's been answered -->
-              <div class="graph-container"  ng-show="randomQuestion.visible === false">                
+              <div class="graph-container"  ng-show="singleRandomQ.visible === false">                
                   <b>Your Answer:</b> {{answerText}}
                   <br>
                   <b>All Answers:</b>
                   <!-- Retrieve and show ONLY the answers to the current question -->
-                  <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentRandomQuestion(randomQuestion,answer)">
+                  <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentRandomUnansweredQuestion(singleRandomQ,answer)">
                     
                     {{answer.value}}: {{answer.count}}
 
@@ -78,23 +81,23 @@
 
         
         <div class="panel-footer question-footer">
-          <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitRandomSelectAnswer(randomQuestion, answerText)" ng-show="randomQuestion.visible === true">Submit</a>
-          <a href="#" role="button" class="btn btn-link question-submit" ng-click="getRandomQuestion()" ng-show="randomQuestion.visible === true">Skip this Question</a>
-          <a href="#" role="button" class="btn btn-info question-submit" ng-click="getRandomQuestion()" ng-show="randomQuestion.visible === false">Next Question</a>
-          <a href="#" role="button" class="btn btn-link question-submit" ng-click="shareAnswer()" ng-show="randomQuestion.visible === false">Share this Graph</a>
+          <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitRandomSelectAnswer(singleRandomQ, answerText)" ng-show="singleRandomQ.visible === true">Submit</a>
+          <a href="#" role="button" class="btn btn-link question-submit" ng-click="getRandomUnansweredQforUser()" ng-show="singleRandomQ.visible === true">Skip this Question</a>
+          <a href="#" role="button" class="btn btn-info question-submit" ng-click="getRandomUnansweredQforUser()" ng-show="singleRandomQ.visible === false">Next Question</a>
+          <a href="#" role="button" class="btn btn-link question-submit" ng-click="shareAnswer()" ng-show="singleRandomQ.visible === false">Share this Graph</a>
         </div>
       </div>
     </div>
   </div>
 
 <!-- NUMBER QUESTIONS -->
-  <div ng-show="randomQuestion.inputType === 'number'">
+  <div ng-show="singleRandomQ.inputType === 'number'">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="panel panel-default question-card">
         <div class="panel-heading question-heading">
           <h4>
           
-          <span ng-switch on="randomQuestion.category">
+          <span ng-switch on="singleRandomQ.category">
             <img ng-switch-when="Preferences" src='http://i.imgur.com/a0GQIN5.png' class="category-icon">
             <img ng-switch-when="Demographics" src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
             <img ng-switch-when="Habits" src='http://i.imgur.com/xfzXFDr.png' class="category-icon">
@@ -107,18 +110,18 @@
             <img ng-switch-when="Media" src='http://i.imgur.com/NWy7czC.png' class="category-icon">
             <img ng-switch-default src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
           </span>
-          {{randomQuestion.category}}
+          {{singleRandomQ.category}}
           </h4>
         </div>
         
         <div class="panel-body question-body">
           <div class="question-text-container random-question-text-container">
-            <h3 class="question-text">{{randomQuestion.text}}</h3>
+            <h3 class="question-text">{{singleRandomQ.text}}</h3>
           </div>
 
           <div class="content-container">
             <!-- SHOW THE QUESTION -->
-              <div class="question-container" ng-show="randomQuestion.visible === true">
+              <div class="question-container" ng-show="singleRandomQ.visible === true">
                 <div class="input-container">
                 <label>
                   <input type="number" class="form-control" id="number" ng-model="answerText" placeholder="Your Answer">
@@ -127,7 +130,7 @@
               </div>
 
             <!-- SHOW THE GRAPH -->
-              <div class="graph-container" ng-show="randomQuestion.visible === false">
+              <div class="graph-container" ng-show="singleRandomQ.visible === false">
                 <b>Your Answer:</b> {{answerText}}
                 <br>
                 <b>All Answers:</b>
@@ -135,30 +138,30 @@
                   <canvas class="chart chart-line" chart-data="data" chart-labels="labels" 
                   chart-series="series" chart-click="onClick"></canvas> 
                 </div>
-                <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentRandomQuestion(randomQuestion,answer)">{{answer.answerText[0]}}
+                <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentRandomUnansweredQuestion(singleRandomQ,answer)">{{answer.answerText[0]}}
                 </div>
               </div>
           </div>
         </div>
 
         <div class="panel-footer question-footer">
-          <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitRandomInputAnswer(randomQuestion, answerText)" ng-show="randomQuestion.visible === true">Submit</a>
-          <a href="#" role="button" class="btn btn-info question-submit" ng-click="getRandomQuestion()" ng-show="randomQuestion.visible === false">Next Question</a>
-          <a href="#" role="button" class="btn btn-link question-submit" ng-click="getRandomQuestion()" ng-show="randomQuestion.visible === true">Skip this Question</a>
-          <a href="#" role="button" class="btn btn-link question-submit" ng-click="shareAnswer(randomQuestion, answerText)" ng-show="randomQuestion.visible === false">Share this Graph</a>
+          <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitRandomInputAnswer(singleRandomQ, answerText)" ng-show="singleRandomQ.visible === true">Submit</a>
+          <a href="#" role="button" class="btn btn-info question-submit" ng-click="getRandomUnansweredQforUser()" ng-show="singleRandomQ.visible === false">Next Question</a>
+          <a href="#" role="button" class="btn btn-link question-submit" ng-click="getRandomUnansweredQforUser()" ng-show="singleRandomQ.visible === true">Skip this Question</a>
+          <a href="#" role="button" class="btn btn-link question-submit" ng-click="shareAnswer(singleRandomQ, answerText)" ng-show="singleRandomQ.visible === false">Share this Graph</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- TEXT QUESTIONS -->
-   <div ng-show="randomQuestion.inputType === 'text'">
+   <div ng-show="singleRandomQ.inputType === 'text'">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="panel panel-default question-card">
         <div class="panel-heading question-heading">
           <h4>
           
-           <span ng-switch on="randomQuestion.category">
+           <span ng-switch on="singleRandomQ.category">
             <img ng-switch-when="Preferences" src='http://i.imgur.com/a0GQIN5.png' class="category-icon">
             <img ng-switch-when="Demographics" src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
             <img ng-switch-when="Habits" src='http://i.imgur.com/xfzXFDr.png' class="category-icon">
@@ -171,17 +174,17 @@
             <img ng-switch-when="Media" src='http://i.imgur.com/NWy7czC.png' class="category-icon">
             <img ng-switch-default src='http://i.imgur.com/hLhYWk7.png' class="category-icon">
           </span>
-          {{randomQuestion.category}}
+          {{singleRandomQ.category}}
           </h4>
         </div>        
         <div class="panel-body question-body">
           <div class="question-text-container random-question-text-container">
-            <h3 class="question-text">{{randomQuestion.text}}</h3>
+            <h3 class="question-text">{{singleRandomQ.text}}</h3>
           </div>
 
           <div class="content-container">
             <!-- SHOW THE QUESTION -->
-              <div class="question-container" ng-show="randomQuestion.visible === true">
+              <div class="question-container" ng-show="singleRandomQ.visible === true">
                 <div class="input-container">
                 <label>
                   <input type="text" class="form-control" id="text" ng-model="answerText" placeholder="Your Answer">
@@ -190,22 +193,22 @@
               </div>
 
             <!-- SHOW THE GRAPH -->
-              <div class="graph-container" ng-show="randomQuestion.visible === false">
+              <div class="graph-container" ng-show="singleRandomQ.visible === false">
                 <b>Your Answer:</b> {{answerText}}
                 <br>
                 <b>All Answers:</b>
-                <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentRandomQuestion(randomQuestion,answer)">{{answer.answerText[0]}}
+                <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentRandomUnansweredQuestion(singleRandomQ,answer)">{{answer.answerText[0]}}
                 </div>
               </div>
           </div>
         </div>
 
         <div class="panel-footer question-footer">
-          <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitRandomInputAnswer(randomQuestion, answerText)" ng-show="randomQuestion.visible === true">Submit</a>
-          <a href="#" role="button" class="btn btn-link question-submit" ng-click="getRandomQuestion()" ng-show="randomQuestion.visible === true">Skip this Question</a>
-          <a href="#" role="button" class="btn btn-info question-submit" ng-click="getRandomQuestion()" ng-show="randomQuestion.visible === false">Next Question</a>
+          <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitRandomInputAnswer(singleRandomQ, answerText)" ng-show="singleRandomQ.visible === true">Submit</a>
+          <a href="#" role="button" class="btn btn-link question-submit" ng-click="getRandomUnansweredQforUser()" ng-show="singleRandomQ.visible === true">Skip this Question</a>
+          <a href="#" role="button" class="btn btn-info question-submit" ng-click="getRandomUnansweredQforUser()" ng-show="singleRandomQ.visible === false">Next Question</a>
           <br>
-          <a href="#" role="button" class="btn btn-link question-submit" ng-click="shareAnswer(randomQuestion, answerText)" ng-show="randomQuestion.visible === false">Share this Graph</a>
+          <a href="#" role="button" class="btn btn-link question-submit" ng-click="shareAnswer(singleRandomQ, answerText)" ng-show="singleRandomQ.visible === false">Share this Graph</a>
         </div>
       </div>
     </div>
