@@ -23,11 +23,11 @@ var answerService = {
     //   });
     // },
 
-    getUsersAnsweredQs: function(userid){
-      return $http.get('/questions/' + userid + '/answered').then(function(data) {
-       angular.copy(data.data, answerService.usersAnswers);
-      });
-    },
+    // getUsersAnsweredQs: function(userid){
+    //   return $http.get('/questions/' + userid + '/answered').then(function(data) {
+    //    angular.copy(data.data, answerService.usersAnswers);
+    //   });
+    // },
 
     // GET DISPLAY EACH ANSWER SUBMITTED. IN THE QUESTION.HTML, USE {{answer.answerText[0].value}}
     getAllAnswersToThisInputQ: function(id){
@@ -112,6 +112,7 @@ var answerService = {
         console.log("7. I'm back from the answer route!")
         console.log("8. here's the answer:", data)
         answerService.answers.push(data);
+        console.log("9. answerService.answers:", answerService.answers)
       });
     },
 

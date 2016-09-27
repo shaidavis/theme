@@ -2,6 +2,7 @@ app.factory('questions', ['$http', function($http) {
 
 var questionService = {
 
+
     questions:[],
     randomQuestion:[],
     answeredQuestions:[],
@@ -25,66 +26,42 @@ var questionService = {
     },
 
     getUserAnsweredQuestions: function() {
-      // console.log("2. inside the getUserAnsweredQuestions service function")
+      console.log("2. inside the getUserAnsweredQuestions service function")
       return $http.get('/questions/user/answered').then(function(data){
-         // console.log('answered questions:', data.data.answers)
+         console.log('answered questions:', data.data)
+
          angular.copy(data.data, questionService.answeredQuestions);
         
         });
     },
 
-    // getRandomUnansweredQforUser: function() {
-    // console.log("2. inside the getRandomUnansweredQforUser service function")
-    //   // questionService.unansweredRandomQ = []
-    //     // questionService.getUserAnsweredQuestions().then(function(){     
 
-    //     var randomInt = Math.floor(Math.random() * ((questionService.questions.length-1) - 0 + 1)) + 0;
-    //     var randomQ = questionService.questions[randomInt]
-    //     console.log("random question:", randomQ)
-    //     console.log("questionService.answeredQuestions:", questionService.answeredQuestions.answers)
-    //     console.log('randomQ:', randomQ)
-    //     console.log("questionService.answeredQuestions.answers.length", questionService.answeredQuestions.answers.length)
-    //     if(questionService.answeredQuestions.answers.length > 0){
-    //       for(i = 0; i < questionService.answeredQuestions.answers.length; i ++){
-    //           console.log(questionService.answeredQuestions.answers[i].questionID + " and " + randomQ._id)
-    //           if(questionService.answeredQuestions.answers[i].questionID === randomQ._id){
-    //             console.log("called again")
-    //             questionService.getRandomUnansweredQforUser()            
-    //           }
-    //           else{
-    //             console.log("good, no match")
-    //             questionService.unansweredRandomQ = randomQ
-    //             // angular.copy(randomQ, questionService.unansweredRandomQ)
-    //             console.log(randomQ);
-    //             return randomQ;
-    //           }
-    //         }
-    //       } else {
-    //         console.log("there were no answers")
-    //         return randomQ
-    //       }    
-    // },
 
 
     getRandomUnansweredQforUser: function() {
+      questionService.getUserAnsweredQuestions()
       console.log("alll questions:", questionService.questions)
-      console.log("answered questions:", questionService.answeredQuestions)
+      console.log('---------------------------------------------')
+      console.log("answered questions:", questionService.answeredQuestions.answers)
       function getRandQ(){
+        
           return questionService.questions[Math.floor(Math.random() * questionService.questions.length)]
         }
       
       let randQ = null
       while(!randQ){
         randQ = getRandQ()
+        console.log('can we use this random  q?', randQ)
           for(var i = 0; i < questionService.answeredQuestions.answers.length; i++){
-                  if(questionService.answeredQuestions.answers[i]._id == randQ._id){
-                      console.log("MATCHED****", questionService.answeredQuestions.answers[i]._id, "and", randQ._id)
+                console.log('hey from the get random =======================================', randQ)
+                  if(questionService.answeredQuestions.answers[i].questionID === randQ._id){
+                      console.log("******MATCHED****", questionService.answeredQuestions.answers[i].questionID, "and", randQ._id)
                       randQ = null
                   }
               }
-          }
           console.log(randQ)
           return randQ
+          }
       
 
     },

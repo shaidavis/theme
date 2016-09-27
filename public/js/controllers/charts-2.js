@@ -1,7 +1,10 @@
-app.controller('ChartsCtrl', ['$scope', 'answers', 'questions', '$location', '$route', function($scope, answers, questions, $location, $route) {
+(function() {
+angular.module('MyApp')
+    .controller('ChartsCtrl', ChartsCtrl);
 
+ChartsCtrl.$inject = ['$scope'];
 
- 
+function ChartsCtrl($scope, answers) {
   $scope.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
   $scope.labels = ["Jan", "Feb", "Mar"];
   $scope.series = ['Series A', 'Series B'];
@@ -39,4 +42,5 @@ app.controller('ChartsCtrl', ['$scope', 'answers', 'questions', '$location', '$r
       ]
     }
   };
-}]);
+}
+})();

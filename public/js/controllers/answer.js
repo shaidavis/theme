@@ -1,12 +1,12 @@
 //The AnswerCtrl is for issues related to the Users' input of answers to questions
 
-app.controller('AnswerCtrl', ['$scope', 'answers', 'questions', '$location', '$route', function($scope, answers, questions, $location, $route) {
-	$scope.randomQuestion = questions.randomQuestion	
-	$scope.questions = questions.questions;
-	$scope.answers = answers.answers
-	$scope.answersSpecific = answers.answersSpecific
-	$scope.userAnswers = answers.userAnswers
-	$scope.singleRandomQ = questions.unansweredRandomQ
+app.controller('AnswerCtrl', ['$scope', 'qa','$location', '$route', function($scope, qa, $location, $route) {
+	$scope.randomQuestion = qa.randomQuestion	
+	$scope.questions = qa.questions;
+	$scope.answers = qa.answers
+	$scope.answersSpecific = qa.answersSpecific
+	$scope.userAnswers = qa.userAnswers
+	$scope.singleRandomQ = qa.unansweredRandomQ
 
 	// $scope.singleRandomQ = questions.unansweredRandomQ
 
@@ -24,7 +24,7 @@ app.controller('AnswerCtrl', ['$scope', 'answers', 'questions', '$location', '$r
 	$scope.getRandomUnansweredQforUser = function(){
 	 // $scope.singleRandomQ = []
      console.log("1. inside the controller getRandomUnansweredQforUser function")
-     $scope.singleRandomQ = questions.getRandomUnansweredQforUser()
+     $scope.singleRandomQ = qa.getRandomUnansweredQforUser()
      // console.log("&&&&&&", questions.getRandomUnansweredQforUser())
      // questions.getRandomUnansweredQforUser().then(function(randomQ){
      // 	$scope.singleRandomQ = randomQ;
@@ -47,7 +47,9 @@ app.controller('AnswerCtrl', ['$scope', 'answers', 'questions', '$location', '$r
 	}
 
 	$scope.currentRandomUnansweredQuestion = function(singleRandomQ, answer){
+		console.log("inside currentRandomUnansweredQuestion")
 		if(singleRandomQ._id === answer.questionID){
+			console.log("inside currentRandomUnansweredQuestion - the question id matches the answered question")
 			return true;
 		} else {
 			return false;
@@ -89,21 +91,23 @@ app.controller('AnswerCtrl', ['$scope', 'answers', 'questions', '$location', '$r
 		//this is my way of 'sneaking' an object into a schema.
 		//I want this as an answer so I can have a key as well as a value and run calculations.
 		answer.answerText.push(answerTextObject)
-		answers.createAnswer(answer);
+		qa.createAnswer(answer);
 		question.visible = false;
-		answers.getAllAnswersToThisSelectQ(question._id)
+		qa.getAllAnswers()
+		qa.getAllAnswersToThisSelectQ(question._id)
 	}
 
 	// WORKING VERSION OF SUBMITINPUTANSWER - all questions
 	$scope.submitInputAnswer = function (question, answerText) {		
 		console.log("answerTextType:", typeof answerText)
-		answers.createAnswer({ 
+		qa.createAnswer({ 
 			userID: '',
 		  	questionID: question._id,
 	  		answerText: answerText
 		});
 		question.visible = false;
-		answers.getAllAnswersToThisInputQ(question._id)
+		qa.getAllAnswers()
+		qa.getAllAnswersToThisInputQ(question._id)
 	}
 
 //SUBMIT ANSWERS - SINGLE RANDOM QUESTION PAGE
@@ -123,21 +127,23 @@ app.controller('AnswerCtrl', ['$scope', 'answers', 'questions', '$location', '$r
 		//this is my way of 'sneaking' an object into a schema.
 		//I want this as an answer so I can have a key as well as a value and run calculations.
 		answer.answerText.push(answerTextObject)
-		answers.createAnswer(answer);
+		qa.createAnswer(answer);
 		randomQuestion.visible = false;
-		answers.getAllAnswersToThisSelectQ(randomQuestion._id)
+		qa.getAllAnswers()
+		qa.getAllAnswersToThisSelectQ(randomQuestion._id)
 	}
 
 	// WORKING VERSION OF SUBMITINPUTANSWER -random quesiton
 	$scope.submitRandomInputAnswer = function (randomQuestion, answerText) {		
 		console.log("answerTextType:", typeof answerText)
-		answers.createAnswer({ 
+		qa.createAnswer({ 
 			userID: '',
 		  	questionID: randomQuestion._id,
 	  		answerText: answerText
 		});
 		randomQuestion.visible = false;
-		answers.getAllAnswersToThisInputQ(randomQuestion._id)
+		qa.getAllAnswers()
+		qa.getAllAnswersToThisInputQ(randomQuestion._id)
 	}
 
 
