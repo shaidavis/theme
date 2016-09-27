@@ -28,6 +28,7 @@ var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
 var questionController = require('./controllers/questions')
 var answerController = require('./controllers/answers')
+var facebookController = require('./controllers/facebook')
 
 var app = express();
 
@@ -133,7 +134,8 @@ app.post('/answer', answerController.answerPost);
 app.put('/account/import', userController.jsonImport);
 app.get('/questions/user/answered', answerController.getUsersAnsweredQs)
 // app.get('/questions/user/unanswered', questionController.getUserUnansweredQuestions)
-
+app.get('/facebook/user/getinfo', facebookController.getThisUserFacebookInfo)
+app.get('/facebook/users/getinfo', facebookController.getAllUserFacebookInfo)
 
 
 

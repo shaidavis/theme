@@ -81,8 +81,13 @@ exports.signupPost = function(req, res, next) {
     user = new User({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      friendCount: 1454,
+      firstName: 'John', 
+      lastName: 'Smith',
+      gender: 'Male'
     });
+    console.log("user created manually:", user)
     user.save(function(err) {
     res.send({ token: generateToken(user), user: user });
     });
@@ -119,6 +124,10 @@ exports.accountPut = function(req, res, next) {
       user.gender = req.body.gender;
       user.location = req.body.location;
       user.website = req.body.website;
+      user.friendCount = req.body.friendCount;
+      user.firstName = req.body.firstName;
+      user.lastName = req.body.lastName;
+      user.gender = req.body.gender
     }
     user.save(function(err) {
       if ('password' in req.body) {
@@ -285,7 +294,7 @@ exports.resetPost = function(req, res, next) {
  * Sign in with Facebook
  */
 exports.authFacebook = function(req, res) {
-  var profileFields = ['id', 'name', 'email', 'gender', 'location',];
+  var profileFields = ['id', 'name', 'email', 'gender', 'location', 'friends', 'likes', 'first_name', 'last_name', 'birthday', 'feed'];
   var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
   var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + profileFields.join(',');
 
@@ -304,6 +313,8 @@ exports.authFacebook = function(req, res) {
 
     // Step 2. Retrieve user's profile information.
     request.get({ url: graphApiUrl, qs: accessToken, json: true }, function(err, response, profile) {
+      console.log("response:", response)
+      console.log("profile:", profile)
       if (profile.error) {
         return res.status(500).send({ msg: profile.error.message });
       }
@@ -319,6 +330,11 @@ exports.authFacebook = function(req, res) {
           user.gender = user.gender || profile.gender;
           user.picture = user.picture || 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
           user.facebook = profile.id;
+          user.friendCount = 1454 || profile.friends.summary.total_count
+          user.firstName = 'John' || profile.first_name
+          user.lastName = 'Smith' || profile.last_name
+          user.gender = 'Male' || profile.gender
+          console.log(user)
           user.save(function() {
             res.send({ token: generateToken(user), user: user });
           });
@@ -339,7 +355,13 @@ exports.authFacebook = function(req, res) {
               gender: profile.gender,
               location: profile.location && profile.location.name,
               picture: 'https://graph.facebook.com/' + profile.id + '/picture?type=large',
-              facebook: profile.id
+              facebook: profile.id,
+              friendCount: profile.friends.summary.total_count,
+              firstName: profile.first_name,
+              lastName: profile.last_name
+
+
+
             });
             console.log(user)
             user.save(function(err) {

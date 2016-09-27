@@ -94,6 +94,19 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
           
         }
       })
+      .when('/facebook', {
+        templateUrl: 'partials/facebook-compare.html',
+        controller: 'FacebookCtrl',
+        resolve: {
+          fbPromise1: ['facebook', function(facebook){
+          return facebook.getThisUserFacebookInfo();
+          }],
+          fbPromise2: ['facebook', function(facebook){
+          return facebook.getAllUserFacebookInfo();
+          }],
+          
+        }
+      })
       .when('/user/answers', {
         templateUrl: 'partials/all-answers.html',
         controller: 'AnswerCtrl',

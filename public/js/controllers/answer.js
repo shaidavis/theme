@@ -16,7 +16,7 @@ app.controller('AnswerCtrl', ['$scope', 'qa','$location', '$route', function($sc
 	  //   [28, 48, 40]
 	  // ];
 
-  $scope.graph = "yo"
+  
   {{$scope.answersSpecific}} 
   $scope.data = []
   $scope.labels = []

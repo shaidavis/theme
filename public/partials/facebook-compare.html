@@ -1,0 +1,88 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="section-header col-sm-6 col-sm-offset-3">
+
+    <div class="page-header">
+	 <span style="color:white; font-size:4.8em; text-shadow: 1px 1px 1px black;">Facebook</span><span style="color:#5BC0DE; font-size:3.8em; text-shadow: 1px 1px 1px black;">.mE</span><span style="color:white; font-size:3.8em; text-shadow: 1px 1px 1px black;">Trics</span>
+	</div>
+    </div>
+  </div>
+  <div class="row">
+
+
+  <!-- SINGLE SELECT QUESTIONS -->
+    <div class="col-sm-4 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading">
+          <h4>
+          
+            <img src='http://i.imgur.com/HbMNcPk.png' class="category-icon">
+          
+          </span>
+          Friend CounT
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+          <h4 class="question-text">Your Facebook Friends: {{thisUserFriendCount}}</h4>
+          <h4 class="question-text">Average Facebook Friends for All theMe Users: {{allUsersFriendCountsAvg}}</h4>
+          <h4 class="question-text">Median Facebook Friends for All theMe Users: {{allUsersFriendCountsMedian}}</h4>                        
+            <div class="content-container">
+              <div class="graph-container">   
+        
+<!-- 			        
+		         	 <a href="#" role="button" class="btn btn-warning question-submit" ng-click="getThisUserFacebookInfo()">Get Friend Count</a>
+		       	 -->
+
+                    <div>
+                        <canvas id='bar' class='chart chart-bar' chart-data='data1' chart-labels='labels1' chart-series='series'></canvas>
+                    </div>
+
+                </div>
+              </div>
+        </div>
+          
+        <div class="panel-footer question-footer">
+         	 <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareAnswer(question, answerText)">Share</a>
+       	</div>
+
+      </div>
+    </div>
+
+	<div class="col-sm-4 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading">
+          <h4>
+          
+            <img src='http://i.imgur.com/HbMNcPk.png' class="category-icon">
+          
+          </span>
+          Friend CounT
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+          <h4 class="question-text">Facebook Friends</h4>            
+            <div class="content-container">
+              <div class="graph-container">   
+
+                    <div>
+                        <canvas id='bar' class='chart chart-bar' chart-data='data2' chart-labels='labels2' chart-series='series' chart-options='options'></canvas>
+                    </div>
+
+                </div>
+              </div>
+        </div>
+          
+        <div class="panel-footer question-footer">
+         	 <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareAnswer(question, answerText)">Share</a>
+       	</div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
