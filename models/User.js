@@ -12,7 +12,8 @@ var schemaOptions = {
 var userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true},
-  answers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Question'}],
+  answers: [],
+  // {type: mongoose.Schema.Types.ObjectId, ref: 'Question'}
   password: String,
   passwordResetToken: String,
   passwordResetExpires: Date,

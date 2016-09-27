@@ -55,6 +55,10 @@
                   <br>
                   <b>All Answers:</b>
                   <!-- Retrieve and show ONLY the answers to the current question -->
+                    <div ng-controller="ChartsCtrl">
+                        {{graph}}
+                        <canvas id='bar' class='chart chart-bar' chart-data='data' chart-labels='labels' chart-series='series'></canvas>
+                    </div>
                   <div 
                     class="answers" 
                     ng-repeat="answer in answersSpecific" 
@@ -62,13 +66,6 @@
                     
                     {{answer.value}}: {{answer.count}}
                     <!-- THE GRAPH -->
-                    <div ng-controller="ChartsCtrl">
-    
-                        <canvas id="bar" class="chart chart-bar"
-                          chart-data="data" chart-labels="labels" chart-series="series"></canvas>
-                        <canvas class="chart chart-line" chart-data="data" chart-labels="labels" 
-                        chart-series="series" chart-click="onClick"></canvas> 
-                    </div>
                   </div>
                 </div>
 

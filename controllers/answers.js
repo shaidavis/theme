@@ -43,7 +43,6 @@ exports.answerPost = function(req, res, next) {
   console.log("5. I'm in the route!")
   console.log(req.user)
   req.body.userID = req.user.id;  
-  console.log(req.body)
   var answer = new Answer(req.body);
   console.log("6. answer from the post route:", answer)
   answer.save(function(err, answer){

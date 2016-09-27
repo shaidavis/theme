@@ -3,14 +3,16 @@
   <div class="row">
     <div class="section-header col-sm-6 col-sm-offset-3">
       <h1 style="color:white; font-size: 50px; text-transform: uppercase; text-shadow:1px 1px 1px black">Random Question</h1>
+
+      <a href="#" role="button" class="btn btn-info question-submit" ng-click="getRandomUnansweredQforUser()">Let's Go!</a>
+
     </div>
   </div>
   <div class="row">
 
 
 
-<a href="#" ng-click="getRandomUnansweredQforUser()">get random unanswered q</a>
-{{singleRandomQ.text}}
+
 
   <!-- SINGLE SELECT QUESTIONS -->
   <div ng-show="singleRandomQ.inputType === 'single'" >

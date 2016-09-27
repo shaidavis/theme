@@ -40,11 +40,11 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
         templateUrl: 'partials/question.html',
         controller: 'AnswerCtrl',
         resolve: {
-          questionPromise: ['questions', function(questions){
-          return questions.getRandomQuestion();
+          questionPromise: ['qa', function(qa){
+          return qa.getRandomQuestion();
           }],
-          answerPromise: ['answers', function(answers){
-          return answers.getAllAnswers();
+          answerPromise: ['qa', function(qa){
+          return qa.getAllAnswers();
           }] 
         }
       })   
@@ -52,11 +52,11 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
         templateUrl: 'partials/single-random-q.html',
         controller: 'AnswerCtrl',
         resolve: {
-          getAllQuestionsPromise: ['questions', function(questions){
-          return questions.getAll();
+          getAllQuestionsPromise: ['qa', function(qa){
+          return qa.getAll();
           }],
-          getUserAnsweredQuestionsPromise: ['questions', function(questions){
-          return questions.getUserAnsweredQuestions();
+          getUserAnsweredQuestionsPromise: ['qa', function(qa){
+          return qa.getUserAnsweredQuestions();
           }]
           // ,
           // getRandomUnansweredQPromise: ['questions', function(questions){
@@ -68,11 +68,11 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
         templateUrl: 'partials/all-questions.html',
         controller: 'AnswerCtrl',
         resolve: {
-          questionPromise: ['questions', function(questions){
-          return questions.getAll();
+          questionPromise: ['qa', function(qa){
+          return qa.getAll();
           }],
-          answerPromise: ['answers', function(answers){
-          return answers.getAllAnswers();
+          answerPromise: ['qa', function(qa){
+          return qa.getAllAnswers();
           }]
 
           
@@ -82,11 +82,11 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
         templateUrl: 'partials/all-questions.html',
         controller: 'AnswerCtrl',
         resolve: {
-          questionPromise: ['questions', function(questions){
-          return questions.getAll();
+          questionPromise: ['qa', function(qa){
+          return qa.getAll();
           }],
-          answerPromise: ['answers', function(answers){
-          return answers.getAllAnswers();
+          answerPromise: ['qa', function(qa){
+          return qa.getAllAnswers();
           }]
           
         }
@@ -96,16 +96,16 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
         controller: 'AnswerCtrl',
         resolve: {
 
-          userAnswers: ['answers', function(answers){
+          userAnswers: ['qa', function(qa){
           var userId = JSON.parse(localStorage.user)._id;
-          return answers.getUsersAnsweredQs(userId);
+          return qa.getUsersAnsweredQs(userId);
           }],
     
-          questionPromise: ['questions', function(questions){
-          return questions.getAll();
+          questionPromise: ['qa', function(qa){
+          return qa.getAll();
           }],
-          answerPromise: ['answers', function(answers){
-          return answers.getAllAnswers();
+          answerPromise: ['qa', function(qa){
+          return qa.getAllAnswers();
           }]
           
         }
