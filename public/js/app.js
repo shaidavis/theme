@@ -73,6 +73,9 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
           }],
           answerPromise: ['qa', function(qa){
           return qa.getAllAnswers();
+          }],
+          answersOfQuestionsPromise: ['qa', function(qa){
+          return qa.getAforeachQ()
           }]
 
           

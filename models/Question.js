@@ -8,7 +8,8 @@ var QuestionSchema = new mongoose.Schema({
   visible: {type: Boolean, default: true},
   graphType: String,	// <- can be: "bar," "line," "pie"
   source: {type: String, default: "input"},		// <- can be: "input," "facebook," "browser"
-  weight: { type: Number, min: 1, max: 10, default: 10 }
+  weight: { type: Number, min: 1, max: 10, default: 10 },
+  answersCollected: []
 });
 
 
