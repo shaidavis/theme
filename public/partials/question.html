@@ -55,22 +55,14 @@
                 <!-- SHOW THE ANSWERS -->
                 <!-- When the question visibility is set to 'false' it means it's been answered -->
               <div class="graph-container"  ng-show="randomQuestion.visible === false">                
-                  <b>Your Answer:</b> {{answerText}}
-                  <br>
                   <b>All Answers:</b>
-                  <!-- Retrieve and show ONLY the answers to the current question -->
-                  <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentRandomQuestion(randomQuestion,answer)">
-                    
-                    {{answer.value}}: {{answer.count}}
-
-                    <!-- START GRAPH -->
-                    <div ng-controller="ChartsCtrl">
-                      <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"></canvas>
+                    <div>
+                        <canvas id='bar' class='chart chart-bar' chart-data='data' chart-labels='labels' chart-series='series' chart-options='options'></canvas>
                     </div>
-                    <!-- END GRAPH -->
-
-                  </div>
-                </div>
+                  <br>
+                   <b>Your Answer:</b> {{userAnswer}}
+ 
+              </div>
 
               </div>
             </div>
@@ -127,16 +119,15 @@
               </div>
 
             <!-- SHOW THE GRAPH -->
-              <div class="graph-container" ng-show="randomQuestion.visible === false">
-                <b>Your Answer:</b> {{answerText}}
-                <br>
-                <b>All Answers:</b>
-                <div ng-controller="ChartsCtrl">
-                  <canvas class="chart chart-line" chart-data="data" chart-labels="labels" 
-                  chart-series="series" chart-click="onClick"></canvas> 
-                </div>
-                <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentRandomQuestion(randomQuestion,answer)">{{answer.answerText[0]}}
-                </div>
+                <!-- When the question visibility is set to 'false' it means it's been answered -->
+              <div class="graph-container"  ng-show="randomQuestion.visible === false">                
+                  <b>All Answers:</b>
+                    <div>
+                        <canvas class='chart chart-line' chart-data='data' chart-labels='labels' chart-series='series' chart-options='options'></canvas>
+                    </div>
+                  <br>
+                   <b>Your Answer:</b> {{userAnswer}}
+ 
               </div>
           </div>
         </div>
@@ -190,13 +181,25 @@
               </div>
 
             <!-- SHOW THE GRAPH -->
-              <div class="graph-container" ng-show="randomQuestion.visible === false">
+
+
+                <!-- When the question visibility is set to 'false' it means it's been answered -->
+              <div class="graph-container"  ng-show="randomQuestion.visible === false">                
+                  <b>All Answers:</b>
+                    <div>
+                        <canvas id='bar' class='chart chart-bar' chart-data='data' chart-labels='labels' chart-series='series' chart-options='options'></canvas>
+                    </div>
+                  <br>
+                   <b>Your Answer:</b> {{userAnswer}}
+ 
+              </div>
+<!--               <div class="graph-container" ng-show="randomQuestion.visible === false">
                 <b>Your Answer:</b> {{answerText}}
                 <br>
                 <b>All Answers:</b>
                 <div class="answers" ng-repeat="answer in answersSpecific" ng-show="currentRandomQuestion(randomQuestion,answer)">{{answer.answerText[0]}}
                 </div>
-              </div>
+              </div> -->
           </div>
         </div>
 

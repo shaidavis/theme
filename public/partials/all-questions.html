@@ -10,7 +10,7 @@
 
   <!-- SINGLE SELECT QUESTIONS -->
   <div ng-repeat="question in questions track by $index" ng-show="question.inputType === 'single'" >
-    <div class="col-sm-4 col-md-3">
+    <div class="col-sm-4 col-md-4">
       <div class="panel panel-default question-card">
         <div class="panel-heading question-heading">
           <h4>
@@ -32,6 +32,8 @@
         </div>
         <div class="panel-body question-body">
           <h4 class="question-text">{{question.text}}</h4>
+
+            
             
             <div class="content-container" >
 
@@ -50,23 +52,31 @@
               </div>
                 <!-- SHOW THE ANSWERS -->
                 <!-- When the question visibility is set to 'false' it means it's been answered -->
-              <div class="graph-container"  ng-show="question.visible === false">                
-                  <b>Your Answer:</b> {{answerText}}
+              <div class="graph-container"  ng-show="question.visible === false">   
+                  <b>Your Answer:</b> {{answerText.value}}
                   <br>
                   <b>All Answers:</b>
+
+                   <a href="#" role="button" class="btn btn-info question-submit" ng-click="tallySelect(question)">Tally!</a>
+                   
+
+                  
                   <!-- Retrieve and show ONLY the answers to the current question -->
-                    <div ng-controller="ChartsCtrl">
-                        {{graph}}
-                        <canvas id='bar' class='chart chart-bar' chart-data='data' chart-labels='labels' chart-series='series'></canvas>
+
+                    <div>
+                        <canvas id='bar' class='chart chart-bar' chart-data='data' chart-labels='labels' chart-series='series' chart-options='options'></canvas>
                     </div>
+ <!--                    
                   <div 
                     class="answers" 
                     ng-repeat="answer in answersSpecific" 
                     ng-show="currentQuestion(question,answer)">
                     
+                    
+
                     {{answer.value}}: {{answer.count}}
-                    <!-- THE GRAPH -->
-                  </div>
+                    
+                  </div> -->
                 </div>
 
               </div>

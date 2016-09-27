@@ -47,13 +47,19 @@ exports.answerPost = function(req, res, next) {
   console.log("6. answer from the post route:", answer)
   answer.save(function(err, answer){
     if(err){ return next(err); }
-
     console.log(answer)
     console.log("req.user.answers BEFORE PUSH", req.user.answers)
     req.user.answers.push(answer)
     console.log("req.user.answers AFTER PUSH", req.user.answers)
     req.user.save()
+    Question.findById(answer.questionID).exec(function(err, question){
+      console.log("QUESTION BEFORE PUSH", question)
+      console.log("ANSWER TO PUSH: ", answer)
+      question.answersCollected.push(answer)
+      console.log("QUESTION AFTER PUSH", question)
+      question.save()
     res.json(answer);
+    })
   });
 };
 

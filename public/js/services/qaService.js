@@ -6,11 +6,28 @@ var qaService = {
     questions:[],
     randomQuestion:[],
     answeredQuestions:[],
-    // unansweredQuestions: new Set(),
     unansweredRandomQ: {},
-	answers:[],
+	  answers:[],
     answersSpecific:[],
     usersAnswers:[],
+    data:[],
+    labels:[],
+
+    getAforeachQ: function(){
+      console.log("yo from getAforeachQ")
+      qaService.getAll().then(function(){  
+      console.log(qaService.questions.length)
+      for (i = 0; i < qaService.questions.length; i++){
+        if (qaService.questions[i].inputType === "single"){
+          if (qaService.questions[i].answersCollected.length > 0 ){
+            console.log(qaService.questions[i].answersCollected)
+          }
+        }
+        // console.log(qaService.questions[i])
+      }
+
+      })
+    },
 
     getAllAnswers: function() {
       return $http.get('/answers').then(function(data) {
@@ -33,11 +50,9 @@ var qaService = {
 
     },
     getAllAnswersToThisSelectQ: function(id){
+      qaService.answersSpecific = []
       console.log("inside the getAllAnswersToThisQ - service ")
       return $http.get('/questions/'+id+'/answers').success(function(data){
-        // console.log("OK, I'm back from the answer route!")
-        // console.log("getAllAnswersToThisSelectQ Here are the answers:", data)
-        // console.log("Type of data:", typeof data)
         var answer1 = {
           count:0,
           value:'',
@@ -79,22 +94,31 @@ var qaService = {
             answer4.questionID = data[i].questionID        
           }
         }
+
         qaService.answersSpecific.push(answer1)
         qaService.answersSpecific.push(answer2)
         qaService.answersSpecific.push(answer3)
         qaService.answersSpecific.push(answer4)
         console.log('getAllAnswersToThisSelectQ: qaService.answersSpecific:', qaService.answersSpecific)
+
+        for (i = 0; i < qaService.answersSpecific.length; i ++){
+          qaService.data.push(qaService.answersSpecific[i].count)
+        }
+        for (i = 0; i < qaService.answersSpecific.length; i ++){
+          qaService.labels.push(qaService.answersSpecific[i].value)
+        }
       })
 
     },
 
 
 
-    createAnswer: function(answer) {
+    createAnswer: function(question, answer) {
       console.log("3. createAnswer: I'm in the answer service!")
+      console.log("4. question:",question)
       console.log("4. answer:", answer)
 
-
+      question.answersCollected.push(answer)
 
       return $http.post('/answer', answer).success(function(data){
         console.log("7. I'm back from the answer route!")
@@ -109,14 +133,19 @@ var qaService = {
       return $http.get('/question/random').then(function(data) {
         angular.copy(data.data, qaService.randomQuestion);
         console.log("service - random question", data.data)
+        for (i = 0; i < data.data.answersCollected.length; i ++){
+          console.log(data.data.answersCollected[i].answerText[0].value)
+        }
         
       });
     },    
 
     getAll: function() {
-    	console.log("hi")
+    	console.log("hi from getAll")
       return $http.get('/question/all-questions').then(function(data) {       
+        
         angular.copy(data.data, qaService.questions);
+        console.log(qaService.questions.length)
       });
     },
 
