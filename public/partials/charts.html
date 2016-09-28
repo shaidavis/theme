@@ -1,43 +1,323 @@
-<div class="container">
-  <div class="panel">
-    <div class="panel-heading">
-      <h3 class="panel-title">Charts</h3>
-    </div>
-    <div class="panel-body">
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="section-header col-sm-6 col-sm-offset-3">
+
+    <div class="">
+   <span style="color:white; font-size:4.8em; text-shadow: 1px 1px 1px black;">Correlation </span><span style="color:#5BC0DE; font-size:3.8em; text-shadow: 1px 1px 1px black;">.mE</span><span style="color:white; font-size:3.8em; text-shadow: 1px 1px 1px black;">Trics</span>
     
-    <h1 class="text-center">Test Charts</h1>
-    <div>
-      <canvas class="chart chart-line" chart-data="data" chart-labels="labels" 
-      chart-series="series" chart-click="onClick"></canvas> 
     </div>
 
-    <div>
-    <canvas id="bar" class="chart chart-bar"
-      chart-data="data" chart-labels="labels" chart-series="series"></canvas>
+    <div style="margin-top:-20px">
+   <span style="color:white; font-size:1.8em; text-shadow: 1px 1px 1px gray; font-family: 'Josefin Sans';">(For Demonstration Purposes Only)</span>
+    
     </div>
-
-    <div>
-      <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels"></canvas> 
-    </div>
-
-  <!-- //this one doesn't work bc of the dataset override -->
-<!--
-    <div>
-      <canvas id="base" class="chart-bar"
-        chart-data="data" chart-labels="labels" chart-colors="colors"
-        chart-dataset-override="datasetOverride">
-      </canvas> 
-    </div> 
--->
-
-    <div>
-      <canvas id="base" class="chart-bar"
-        chart-data="data" chart-labels="labels" chart-colors="colors">
-      </canvas> 
-    </div>
-
-    <!-- <nvd3 options="options" data="data"></nvd3> -->
-
+  <br>
+        <a href="#" role="button" class="btn btn-warning question-submit" ng-click="generateReport()">   <i class="fa fa-magic" aria-hidden="true"></i> Generate a Report</a>
     </div>
   </div>
+  <div class="row">
+
+
+  
+    <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+      <i class="fa fa-trophy" aria-hidden="true"></i>
+            
+          </span>
+          Birth Month & Athleticism
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+        <br>
+        <div>
+          <p class="facebook-text">In his book, "Outliers," Malcolm Gladwell explored the possibility of a correlation between the month of one's person, and his or her athletic proclivities. This report examines that correlation. </p>   
+         <br>
+         </div>                     
+            <div class="content-container">
+              <div class="graph-container">   
+                    <div>
+
+                      <canvas id="line" class="chart chart-line" chart-data="data1" chart-labels="labels1" chart-series="series1" chart-options="options1" chart-click="onClick">
+                      </canvas> 
+                    </div>
+
+<!--              
+               <a href="#" role="button" class="btn btn-warning question-submit" ng-click="getThisUserFacebookInfo()">Get Friend Count</a>
+             -->
+
+
+
+                </div>
+              </div>
+        </div>
+          
+        <div class="panel-footer question-footer">
+           <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareReport()">
+            <i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+                Share this Graph
+
+           </a>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+            <i class="fa fa-tv" aria-hidden="true"></i>
+          
+          </span>
+          Favorite Shows & Voting Intentions
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+        <br>
+        <div>
+          <p class="facebook-text">By understanding the media habits of potential voters, political candidates can focus their advertising spending and campaign messaging. This chart compares the voting intentions of Americans and their favorite shows.</p>
+          
+         <br>
+         </div>                     
+            <div class="content-container">
+              <div class="graph-container">   
+        
+<!--              
+               <a href="#" role="button" class="btn btn-warning question-submit" ng-click="getThisUserFacebookInfo()">Get Friend Count</a>
+             -->
+
+                    <div>
+                       <canvas id="radar" class="chart chart-radar" chart-data="data2" chart-labels="labels2" chart-series="series2">
+                         
+                       </canvas> 
+                    </div>
+
+                </div>
+              </div>
+        </div>
+          
+        <div class="panel-footer question-footer">
+           <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareReport()">
+            <i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+                Share this Graph
+
+           </a>
+        </div>
+
+      </div>
+    </div>
+
+
+
+     <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+            <i class="fa fa-bed" aria-hidden="true"></i>
+          
+          </span>
+          Arthritis & Sleep Quality
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+        <br>
+        <div>
+          <p class="facebook-text">Is there a correlation between arthitis and sleep quality? Studying different medical conditions and their co-morbidities with can help researchers and pharmaceutical companies tap into unmet needs in healthcare and medicine.</p>
+          <br>
+          
+         <br>
+         </div>                     
+            <div class="content-container">
+              <div class="graph-container">   
+        
+
+                  <canvas id="polar-area" class="chart chart-polar-area"
+                    chart-data="data3" chart-labels="labels3">
+                  </canvas> 
+                    
+                </div>
+              </div>
+        </div>
+          
+        <div class="panel-footer question-footer">
+           <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareReport()">
+            <i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+                Share this Graph
+
+           </a>
+        </div>
+
+      </div>
+    </div>
+
+
+
+     <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+            <i class="fa fa-venus-mars" aria-hidden="true"></i>
+
+          
+          </span>
+          Birth Order & Sexuality
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+        <br>
+        <div>         
+        
+          <p class="facebook-text">Researchers have begun considering a connection between male sexuality and birth order. Having access to a global, anonymous dataset can help scientists and laypeople alike understand nuances of the human experience. </p>
+         <br><br>
+         </div>                     
+            <div class="content-container">
+              <div class="graph-container">   
+        
+<!--              
+               <a href="#" role="button" class="btn btn-warning question-submit" ng-click="getThisUserFacebookInfo()">Get Friend Count</a>
+             -->
+
+                    <div>
+                        <canvas id="base" class="chart-bubble" chart-data="data4" chart-series="series4" >
+                        </canvas> 
+                    </div>
+
+                </div>
+              </div>
+        </div>
+        
+        <div class="panel-footer question-footer">
+           <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareReport()">
+            <i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+                Share this Graph
+
+           </a>
+        </div>
+
+      </div>
+    </div>
+
+
+
+     <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+            <i class="fa fa-food" aria-hidden="true"></i>
+
+          
+          </span>
+          Cilantro & Ice Cream Preferences
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+        <br>
+        <div>         
+        
+          <p class="facebook-text">Large data collection allows us to explore connections between tastes, preferences, and habits we might not have previously appreciated. By seeing what other things people like us enjoy, we can discover new opportunities.</p>
+         <br>
+         </div>                     
+            <div class="content-container">
+              <div class="graph-container">   
+        
+<!--              
+               <a href="#" role="button" class="btn btn-warning question-submit" ng-click="getThisUserFacebookInfo()">Get Friend Count</a>
+             -->
+
+
+                    <div>
+                        <canvas id='bar' class='chart chart-bar' chart-data='data5' chart-labels='labels5' chart-series='series5' chart-options='options' chart-colors="colors5"></canvas>
+                    </div>
+
+                </div>
+              </div>
+        </div>
+          
+        <div class="panel-footer question-footer">
+           <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareReport()">
+            <i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+                Share this Graph
+
+           </a>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+     <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+            <i class="fa fa-users" aria-hidden="true"></i>
+
+          
+          </span>
+          Population "Normalcy"
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+        <br>
+        <div>         
+        
+          <p class="facebook-text">As users answer questions and sync their other online accounts, they can begin to see a clearer picture of how they fall into "typical" or "atypical" patterns. A broad view can direct them to new ways to push themselves out of their comfort zones. </p>
+         <br>
+         </div>                     
+            <div class="content-container">
+              <div class="graph-container">   
+        
+<!--              
+               <a href="#" role="button" class="btn btn-warning question-submit" ng-click="getThisUserFacebookInfo()">Get Friend Count</a>
+             -->
+
+                    <div>
+                         <canvas id="doughnut" class="chart chart-doughnut" chart-data="data6" chart-labels="labels6">
+                      </canvas> 
+                    </div>
+
+                </div>
+              </div>
+        </div>
+          
+        <div class="panel-footer question-footer">
+           <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareReport()">
+            <i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+                Share this Graph
+
+           </a>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+  </div>
 </div>
+
