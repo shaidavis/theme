@@ -19,26 +19,27 @@
             Home
           </a>
           </li>
-        <li ng-class="{ active: isActive('/contact')}">
+<!--         <li ng-class="{ active: isActive('/contact')}">
           <a href="/contact">
             <i class="fa fa-envelope header-icon" aria-hidden="true"></i>
             Contact
           </a>
-        </li>
+        </li> -->
 
         <ul ng-if="isAuthenticated()" class="nav navbar-nav">
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+              <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
               Questions <i class="caret"></i>
             </a>
               <ul class="dropdown-menu">
               <li ng-class="{ active: isActive('/question')}">
               <a href="/question">
-                <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
+                <i class="fa fa-random header-icon" aria-hidden="true"></i>
                 Random Question
               </a>
             </li>
-            <li ng-class="{ active: isActive('/single-random-q')}">
+<!--             <li ng-class="{ active: isActive('/single-random-q')}">
               <a href="/single-random-q">
                 <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
                 Unanswered Random Question
@@ -50,10 +51,10 @@
                 <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
                 All Answers from User
               </a>
-            </li>
+            </li> -->
             <li ng-class="{ active: isActive('/all-questions')}">
               <a href="/all-questions">
-                <i class="fa fa-question-circle header-icon" aria-hidden="true"></i>
+                <i class="fa fa-list header-icon" aria-hidden="true"></i>
                 All Questions
               </a>
             </li>
@@ -68,14 +69,42 @@
           </li>
         </ul>
 
+
+        <ul ng-if="isAuthenticated()" class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+              <i class="fa fa-pie-chart header-icon" aria-hidden="true"></i>
+              Reports <i class="caret"></i>
+            </a>
+              <ul class="dropdown-menu">
+              <li ng-class="{ active: isActive('/facebook')}">
+              <a href="/facebook">
+                <i class="fa fa-facebook header-icon" aria-hidden="true"></i>
+                Your Facebook Report
+              </a>
+            </li>
+
+            <li ng-class="{ active: isActive('/charts')}">
+              <a href="/charts">
+                <i class="fa fa-area-chart header-icon" aria-hidden="true"></i>
+                Correlation Reports
+              </a>
+            </li>
+            
+            </ul>
+          </li>
+        </ul>
+
           
 
-        <li ng-class="{ active: isActive('/charts')}">
+
+
+<!--         <li ng-class="{ active: isActive('/charts')}">
           <a href="/charts">
             <i class="fa fa-pie-chart header-icon" aria-hidden="true"></i>
-            Charts
+            Reports
           </a>
-        </li>
+        </li> -->
         <li ng-class="{ active: isActive('/about')}">
           <a href="/about">
             <i class="fa fa-info-circle header-icon" aria-hidden="true"></i>

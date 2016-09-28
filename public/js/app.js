@@ -1,12 +1,17 @@
 var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
-  app.config(['$routeProvider','$locationProvider', '$authProvider', function($routeProvider, $locationProvider, $authProvider) {
-
+  app.config(['$routeProvider','$locationProvider', '$authProvider', 'ChartJsProvider', function($routeProvider, $locationProvider, $authProvider, ChartJsProvider) {
+     
 
     $locationProvider.html5Mode(true);
 
     $routeProvider
       .when('/', {
-        templateUrl: 'partials/home.html'
+        templateUrl: 'partials/home.html',
+        controller: 'SignupCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'partials/about.html',
+        controller: 'SignupCtrl'
       })
       .when('/charts', {
         templateUrl: 'partials/charts.html',
@@ -103,7 +108,7 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
           }],
           fbPromise2: ['facebook', function(facebook){
           return facebook.getAllUserFacebookInfo();
-          }],
+          }]
           
         }
       })
@@ -149,7 +154,7 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
 
     function skipIfAuthenticated($location, $auth) {
       if ($auth.isAuthenticated()) {
-        $location.path('/');
+        $location.path('/facebook');
       }
     }
 
@@ -160,6 +165,13 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
     }
   }
 ]);
+
+
+  app.config(function (ChartJsProvider) {
+      ChartJsProvider.setOptions({
+      colors: ['#fff', '#fff', '#fff', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360']
+      });
+})
 
   app.run(function($rootScope, $window) {
     if ($window.localStorage.user) {

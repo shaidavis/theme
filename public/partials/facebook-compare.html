@@ -3,32 +3,37 @@
   <div class="row">
     <div class="section-header col-sm-6 col-sm-offset-3">
 
-    <div class="page-header">
+    <div class="">
 	 <span style="color:white; font-size:4.8em; text-shadow: 1px 1px 1px black;">Facebook</span><span style="color:#5BC0DE; font-size:3.8em; text-shadow: 1px 1px 1px black;">.mE</span><span style="color:white; font-size:3.8em; text-shadow: 1px 1px 1px black;">Trics</span>
 	</div>
+	      <a href="/question" role="button" class="btn btn-warning question-submit">Skip to Questions</a>
     </div>
   </div>
   <div class="row">
 
 
-  <!-- SINGLE SELECT QUESTIONS -->
-    <div class="col-sm-4 col-md-6">
+  
+    <div class="col-sm-6 col-md-6">
       <div class="panel panel-default question-card">
         
-        <div class="panel-heading question-heading">
-          <h4>
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
           
-            <img src='http://i.imgur.com/HbMNcPk.png' class="category-icon">
-          
+			<i class="fa fa-users" aria-hidden="true"></i>
+          	
           </span>
           Friend CounT
           </h4>
         </div>
 
         <div class="panel-body question-body">
-          <h4 class="question-text">Your Facebook Friends: {{thisUserFriendCount}}</h4>
-          <h4 class="question-text">Average Facebook Friends for All theMe Users: {{allUsersFriendCountsAvg}}</h4>
-          <h4 class="question-text">Median Facebook Friends for All theMe Users: {{allUsersFriendCountsMedian}}</h4>                        
+        <br>
+        <div>
+          <p class="facebook-text">Your Facebook Friends: <span class="facebook-info">{{thisUserFriendCount}}</span></p>
+          <p class="facebook-text">Average Facebook Friends for All theMe Users: <span class="facebook-info">{{allUsersFriendCountsAvg}}</span></p>
+          <p class="facebook-text">Median Facebook Friends for All theMe Users: <span class="facebook-info">{{allUsersFriendCountsMedian}}</span></p>   
+         <br>
+         </div>                     
             <div class="content-container">
               <div class="graph-container">   
         
@@ -37,7 +42,7 @@
 		       	 -->
 
                     <div>
-                        <canvas id='bar' class='chart chart-bar' chart-data='data1' chart-labels='labels1' chart-series='series'></canvas>
+                        <canvas id='bar' class='chart chart-bar' chart-data='data1' chart-labels='labels1' chart-series='series' chart-options='options' chart-colors="colors"></canvas>
                     </div>
 
                 </div>
@@ -45,32 +50,48 @@
         </div>
           
         <div class="panel-footer question-footer">
-         	 <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareAnswer(question, answerText)">Share</a>
+         	 <a href="#" role="button" class="btn btn-info question-submit">
+         	 	<i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+          			Share this Graph
+
+         	 </a>
        	</div>
 
       </div>
     </div>
 
-	<div class="col-sm-4 col-md-6">
+
+    <div class="col-sm-6 col-md-6">
       <div class="panel panel-default question-card">
         
-        <div class="panel-heading question-heading">
-          <h4>
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
           
-            <img src='http://i.imgur.com/HbMNcPk.png' class="category-icon">
+            <i class="fa fa-tag" aria-hidden="true"></i>
           
           </span>
-          Friend CounT
+          Name Length
           </h4>
         </div>
 
         <div class="panel-body question-body">
-          <h4 class="question-text">Facebook Friends</h4>            
+        <br>
+        <div>
+          <p class="facebook-text">Your First Name Length: <span class="facebook-info">{{thisUserFirstNameLength}} Letters</span></p>
+          <p class="facebook-text">Your Last Name Length: <span class="facebook-info">{{thisUserLastNameLength}} Letters</span></p>
+          <p class="facebook-text">Your Email Address Length: <span class="facebook-info">{{thisUserEmailLength}} Letters</span></p>
+          
+         <br>
+         </div>                     
             <div class="content-container">
               <div class="graph-container">   
+        
+<!-- 			        
+		         	 <a href="#" role="button" class="btn btn-warning question-submit" ng-click="getThisUserFacebookInfo()">Get Friend Count</a>
+		       	 -->
 
                     <div>
-                        <canvas id='bar' class='chart chart-bar' chart-data='data2' chart-labels='labels2' chart-series='series' chart-options='options'></canvas>
+                        <canvas id='bar' class='chart chart-bar' chart-data='data2' chart-labels='labels2' chart-series='series2' chart-options='options2' chart-colors="colors"></canvas>
                     </div>
 
                 </div>
@@ -78,11 +99,202 @@
         </div>
           
         <div class="panel-footer question-footer">
-         	 <a href="#" role="button" class="btn btn-info question-submit" ng-click="shareAnswer(question, answerText)">Share</a>
+         	 <a href="#" role="button" class="btn btn-info question-submit">
+         	 	<i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+          			Share this Graph
+
+         	 </a>
        	</div>
+
+      </div>
+    </div>
+
+
+
+     <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+            <i class="fa fa-flag" aria-hidden="true"></i>
+          
+          </span>
+          First Initial Frequency
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+        <br>
+        <div>
+          <p class="facebook-text">Your First Name Initial: <span class="facebook-info">{{thisUserFirstNameFirstLetter}} </span></p>
+          <p class="facebook-text">Your Last Name Initial: <span class="facebook-info">{{thisUserLastNameFirstLetter}} </span></p>
+          <br>
+          
+         <br>
+         </div>                     
+            <div class="content-container">
+              <div class="graph-container">   
+        
+<!-- 			        
+		         	 <a href="#" role="button" class="btn btn-warning question-submit" ng-click="getThisUserFacebookInfo()">Get Friend Count</a>
+		       	 -->
+
+                    <div>
+                        <canvas class='chart chart-line' chart-data='data3' chart-labels='labels3' chart-series='series3' chart-options='options3' chart-colors="colors"></canvas>
+                    </div>
+
+                </div>
+              </div>
+        </div>
+          
+        <div class="panel-footer question-footer">
+         	 <a href="#" role="button" class="btn btn-info question-submit">
+         	 	<i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+          			Share this Graph
+
+         	 </a>
+       	</div>
+
+      </div>
+    </div>
+
+
+
+     <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+        
+        <div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+            <i class="fa fa-venus-mars" aria-hidden="true"></i>
+
+          
+          </span>
+          Gender Breakdown
+          </h4>
+        </div>
+
+        <div class="panel-body question-body">
+        <br>
+        <div>         
+        
+          <p class="facebook-text">Male Users: <span class="facebook-info">48%</span></p>
+          <p class="facebook-text">Female: <span class="facebook-info">47% </span></p>
+          <p class="facebook-text">Non-Binary: <span class="facebook-info">2% </span></p>
+         <br>
+         </div>                     
+            <div class="content-container">
+              <div class="graph-container">   
+        
+<!-- 			        
+		         	 <a href="#" role="button" class="btn btn-warning question-submit" ng-click="getThisUserFacebookInfo()">Get Friend Count</a>
+		       	 -->
+
+                    <div>
+                        <canvas class='chart chart-pie' chart-data='data4' chart-labels='labels4'  chart-options='options4' chart-colors="colors"></canvas>
+                    </div>
+
+                </div>
+              </div>
+        </div>
+          
+        <div class="panel-footer question-footer">
+         	 <a href="#" role="button" class="btn btn-info question-submit">
+         	 	<i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -2px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+          			Share this Graph
+
+         	 </a>
+       	</div>
+
+      </div>
+    </div>
+
+
+
+
+     <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+		<div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+            <i class="fa fa-area-chart" aria-hidden="true"></i>
+
+          
+          </span>
+          Other Data to Measure:
+          </h4>
+        </div>
+
+
+        <div class="panel-body question-body">
+        <br>
+            <div class="content-container">
+
+		        <div>         
+		        <h4>With additional Facebook permissions from users, we can also enable them to measure and study the effects of their:</h4>
+		          <ul>
+			          <li class="addl-text">Age and demographics</li>
+			          <li class="addl-text">"Like" popularity and influence</li>
+			          <li class="addl-text">Online activity and interests</li>
+			          <li class="addl-text">Birth month and birth week day</li>
+			          <li class="addl-text">Educational level</li>
+			          <li class="addl-text">Professional experience</li>
+			          <li class="addl-text">Media preferences</li>
+			          <li class="addl-text">Current and past locations</li>
+			          <li class="addl-text">Political and religious ideologies</li>
+			          <li class="addl-text">Relationship status</li>
+			          <li class="addl-text">Photograph and video data</li>
+		          </ul>
+			     <h4>Plus input from other APIs (including LinkedIn, Twitter, Instagram, FitBit, etc)</h4>
+		         <br>
+		         </div>                     
+
+                
+            </div>
+        </div>
+          
+
+
+      </div>
+    </div>
+
+
+
+
+     <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default question-card">
+		<div class="panel-heading question-heading" style="height:54px;">
+          <h4 style="font-size:30px">
+          
+            <i class="fa fa-magic" aria-hidden="true"></i>
+
+          
+          </span>
+          Let's Get Interesting...
+          </h4>
+        </div>
+
+
+        <div class="panel-body question-body" style="min-height:120px;">
+        <br>
+            <div class="">
+
+		    </div>
+	      		<a href="/question" role="button" class="btn btn-warning question-submit">
+	      		<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+	      		Answer the Questions
+	      		</a>
+    		</div>
+                
+            </div>
+        </div>
+          
+
 
       </div>
     </div>
 
   </div>
 </div>
+

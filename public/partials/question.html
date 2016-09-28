@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="section-header col-sm-6 col-sm-offset-3">
-      <h1 style="color:white; font-size: 50px; text-transform: uppercase; text-shadow:1px 1px 1px black">Random Question</h1>
+      <!-- <h1 style="color:white; font-size: 50px; text-transform: uppercase; text-shadow:1px 1px 1px black">Random Question</h1> -->
     </div>
   </div>
   <div class="row">
@@ -73,7 +73,10 @@
           <a href="#" role="button" class="btn btn-warning question-submit" ng-click="submitRandomSelectAnswer(randomQuestion, answerText)" ng-show="randomQuestion.visible === true">Submit</a>
           <a href="#" role="button" class="btn btn-link question-submit" ng-click="getRandomQuestion()" ng-show="randomQuestion.visible === true">Skip this Question</a>
           <a href="#" role="button" class="btn btn-info question-submit" ng-click="getRandomQuestion()" ng-show="randomQuestion.visible === false">Next Question</a>
-          <a href="#" role="button" class="btn btn-link question-submit" ng-click="shareAnswer()" ng-show="randomQuestion.visible === false">Share this Graph</a>
+          <a href="#" role="button" class="btn btn-link question-submit" ng-click="shareAnswer()" ng-show="randomQuestion.visible === false">
+          <i class="fa fa-facebook-official" style="font-size: 1.2em; vertical-align: -1px; margin-right: 2px; opacity: 0.9;" aria-hidden="true"></i>
+          Share this Graph
+          </a>
         </div>
       </div>
     </div>
