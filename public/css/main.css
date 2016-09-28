@@ -447,3 +447,45 @@ input[type='radio']:checked:before {
 }
 
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CRaleway:100,300,600,700,800");
+
+
+
+/*facebook page stuff*/
+.facebook-text {
+  font-family: 'Josefin Sans';
+  margin: 0px;
+  font-weight: bold;
+  font-size:16px;
+}
+
+.facebook-info {
+  color: #d43a2c;
+  font-weight: normal;
+}
+
+.faq-question {
+  text-decoration: none; 
+  color: #d43a2c;
+  font-size: 18px;
+}
+
+.faq-question:hover {
+  
+  color: #5bc0de;
+  text-decoration: none:;
+  
+}
+
+.faq-question:focus {
+  text-decoration: none:; 
+}
+.faq-question:active {
+  text-decoration: none:; 
+}
+
+
+
+.faq-answer {
+  font-size: 14px;
+  padding-left:14px;
+}

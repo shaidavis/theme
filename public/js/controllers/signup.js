@@ -15,7 +15,7 @@ function SignupCtrl($scope, $rootScope, $location, $window, $auth) {
             $auth.setToken(response);
             $rootScope.currentUser = response.data.user;
             $window.localStorage.user = JSON.stringify(response.data.user);
-            $location.path('/');
+            $location.path('/facebook');
           })
           .catch(function(response) {
             $scope.messages = {
@@ -29,7 +29,7 @@ function SignupCtrl($scope, $rootScope, $location, $window, $auth) {
           .then(function(response) {
             $rootScope.currentUser = response.data.user;
             $window.localStorage.user = JSON.stringify(response.data.user);
-            $location.path('/');
+            $location.path('/facebook');
           })
           .catch(function(response) {
             if (response.error) {
