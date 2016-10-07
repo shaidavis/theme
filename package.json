@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "My app description",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "npm test && git push heroku master",
     "start": "node server.js"
   },

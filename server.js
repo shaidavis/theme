@@ -32,9 +32,9 @@ var facebookController = require('./controllers/facebook')
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/theme');
+// mongoose.connect('mongodb://localhost/theme');
 
-// mongoose.connect(process.env.MONGODB || 'mongodb://localhost/theme');
+mongoose.connect(process.env.MONGOLAB_IVORY_URI || 'mongodb://localhost/theme');
 
 
 mongoose.connection.on('error', function() {
