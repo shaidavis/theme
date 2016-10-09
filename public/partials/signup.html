@@ -4,32 +4,44 @@
       <div ng-if="messages.error" role="alert" class="alert alert-danger">
         <div ng-repeat="error in messages.error">{{error.msg}}</div>
       </div>
-      <form ng-submit="signup()">
+
         <legend>Create an account</legend>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" name="name" id="name" placeholder="Name" class="form-control" ng-model="user.name" autofocus>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" placeholder="Email" class="form-control" ng-model="user.email">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" placeholder="Password" class="form-control" ng-model="user.password">
-        </div>
-        <div class="form-group">
-          <small class="text-muted">By signing up, you agree to the <a href="/">Terms of Service</a>.</small>
-        </div>
-        <button type="submit" class="btn btn-success">Create an account</button>
-      </form>
-      <div class="hr-title"><span>or</span></div>
+
       <div class="btn-toolbar text-center">
         <button class="btn btn-facebook" ng-click="authenticate('facebook')">Sign in with Facebook</button>
       </div>
+      
+      <div class="hr-title"><span>or</span></div>
+      
+      <form ng-submit="signup()">
+      
+      <!-- I added this 'fieldset' to disable email signup. Simply remove the fieldset and /fieldset to reenable it. -->
+      <fieldset disabled> 
+
+
+        <div class="form-group">
+        <h5 style="text-align:center">Email signup is not yet available</h5>
+          <label for="name" style="color:gray;">Name</label>
+          <input type="text" name="name" id="name" placeholder="Name" class="form-control" ng-model="user.name" autofocus>
+        </div>
+        <div class="form-group">
+          <label for="email" style="color:gray;">Email</label>
+          <input type="email" name="email" id="email" placeholder="Email" class="form-control" ng-model="user.email">
+        </div>
+        <div class="form-group">
+          <label for="password" style="color:gray;">Password</label>
+          <input type="password" name="password" id="password" placeholder="Password" class="form-control" ng-model="user.password">
+        </div>
+        <div class="form-group">
+          <!-- <small class="text-muted">By signing up, you agree to the <a href="/">Terms of Service</a>.</small> -->
+        </div>
+        <button type="submit" class="btn btn-success">Create an account</button>
+        </fieldset>
+      </form>
+
     </div>
   </div>
   <p class="text-center">
-    Already have an account? <a href="/login"><strong>Log in</strong></a>
+    Already have an account? <a href="/login" style="color:white;"><strong>Log in</strong></a>
   </p>
 </div>

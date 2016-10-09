@@ -149,6 +149,7 @@ var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'chart.js']);
     $authProvider.facebook({
       url: '/auth/facebook',
       clientId: '538603316330604',
+      // redirectUri: 'http://localhost:3000/auth/facebook/callback'
       redirectUri: 'http://www.theme.fyi/auth/facebook/callback'
     });
 
